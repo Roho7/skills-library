@@ -1,0 +1,88 @@
+{
+  "groups": [
+    "pstack"
+  ],
+  "substitutions": [
+    {
+      "literal": "~/.cursor/rules/pstack-models.mdc",
+      "replacement": "~/.claude/rules/pstack-models.md"
+    },
+    {
+      "literal": "pstack-models.mdc",
+      "replacement": "pstack-models.md"
+    },
+    {
+      "literal": ".cursor/skills/",
+      "replacement": ".claude/skills/"
+    },
+    {
+      "literal": ".cursor-plugin/plugin.json",
+      "replacement": ".claude-plugin/plugin.json"
+    },
+    {
+      "literal": "~/.cursor/plugins/",
+      "replacement": "~/.claude/plugins/"
+    },
+    {
+      "regex": "\\bomit Task `model`",
+      "replacement": "omit Agent `model`"
+    },
+    {
+      "regex": "\\ba Task error\\b",
+      "replacement": "an Agent error"
+    },
+    {
+      "regex": "\\bTask subagent\\b",
+      "replacement": "Agent subagent"
+    },
+    {
+      "regex": "\\b[Tt]he Task tool\\b",
+      "replacement": "the Agent tool"
+    },
+    {
+      "regex": "\\bTask tool\\b",
+      "replacement": "Agent tool"
+    },
+    {
+      "regex": "`Task`",
+      "replacement": "`Agent`"
+    },
+    {
+      "regex": "\\bAskQuestion\\b",
+      "replacement": "AskUserQuestion"
+    },
+    {
+      "regex": "subagent_type: \"?generalPurpose\"?",
+      "replacement": "subagent_type: \"general-purpose\""
+    },
+    {
+      "literal": "`generalPurpose` with `readonly: false` (agent mode)",
+      "replacement": "`general-purpose`"
+    },
+    {
+      "regex": "`generalPurpose`",
+      "replacement": "`general-purpose`"
+    },
+    {
+      "regex": "environment: \"cloud\"",
+      "replacement": "isolation: \"worktree\""
+    },
+    {
+      "regex": "\\bclaude-(opus|sonnet|haiku|fable)-[0-9]+(?:-[0-9]+)*-(low|medium|high|xhigh|max)(?:-fast)?\\b",
+      "replacement": "$1 $2"
+    },
+    {
+      "regex": "\\b(?:grok|gpt|gemini|composer)-[0-9][0-9a-z.]*(?:-[0-9a-z.]+)*\\b",
+      "replacement": "inherit-parent"
+    }
+  ],
+  "denylist": [
+    "`Task`",
+    "Task tool",
+    "AskQuestion",
+    "pstack-models.mdc",
+    "generalPurpose",
+    "grok-4",
+    "claude-opus-5"
+  ]
+}

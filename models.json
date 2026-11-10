@@ -1,0 +1,26 @@
+{
+  "budget": "small (medium)",
+  "tiers": {
+    "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet medium" },
+    "judge": { "cursor": "inherit-parent", "claude": "inherit-parent" }
+  },
+  "roles": {
+    "feature, refactoring": ["worker"],
+    "bug-fix": ["worker"],
+    "perf-issue": ["worker"],
+    "hillclimb": ["worker"],
+    "judgment and prose": ["judge"],
+    "hardest tasks": ["judge"],
+    "how explorer": ["worker"],
+    "how explainer": ["judge"],
+    "why investigators": ["worker"],
+    "why synthesizer": ["judge"],
+    "reflect tooling": ["worker"],
+    "reflect judgment, divergent, synthesizer": ["judge"],
+    "arena runners": ["judge", "worker"],
+    "arena cross-judge pool": ["judge", "worker"],
+    "swarm workers": ["worker"],
+    "architect runners": ["judge", "worker"],
+    "interrogate reviewers": ["judge", "worker"]
+  }
+}

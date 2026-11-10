@@ -15,10 +15,14 @@ skills/<group>/<name>/SKILL.md
   higgsfield/    higgsfield-ai/skills
   third-party/   single skills from other sources
 agents/<group>/<name>.md    subagents (pstack: poteto-agent, comment-sicko)
-rules/<name>.md             always-on rules (e.g. pstack-defaults: no-comments on every pstack diff)
+rules/<name>.md             always-on rules shared by all tools (e.g. pstack-defaults)
+models.json                 pstack model policy: roles → tiers → each tool's model
+adapters/claude/            Cursor→Claude translation: substitutions.json (build time) + pstack-runtime.md (leftovers, read at runtime)
+generated/                  build output, gitignored: per-tool model sheets + Claude-translated pstack
 skills.json                 generated index of skills + agents, for orchestrators
 vendor.lock.json            upstream of each vendored skill/agent: sourceUrl, skillPath, group, kind
-scripts/link.sh             symlink everything into the tools, then regenerate skills.json
+scripts/build.mjs           build generated/ (--check fails on untranslated Cursor terms)
+scripts/link.sh             build, symlink everything into the tools, regenerate skills.json
 scripts/update-vendor.sh    re-pull vendored entries from upstream; review with git diff
 scripts/index.mjs           regenerate skills.json
 ```
@@ -27,9 +31,21 @@ scripts/index.mjs           regenerate skills.json
 
 | Repo | Linked into |
 |---|---|
-| `skills/*/*` | `~/.claude/skills`, `~/.agents/skills`, `~/.cursor/skills` |
+| `skills/*/*` | `~/.cursor/skills`, `~/.agents/skills`, `~/.claude/skills` |
+| `generated/claude/skills/*` | `~/.claude/skills`, replacing the source copy (pstack only) |
 | `agents/*/*.md` | `~/.claude/agents`, `~/.cursor/agents` |
 | `rules/*.md` | `~/.claude/rules/*.md`, `~/.cursor/rules/*.mdc` |
+| `generated/claude/*.md` | `~/.claude/rules/` (`pstack-models.md`, `pstack-runtime.md`) |
+| `generated/cursor/*.mdc` | `~/.cursor/rules/` (`pstack-models.mdc`) |
+
+## One pstack, two tools
+
+pstack is written for Cursor. Following [pstack-claude](https://github.com/michael-denyer/pstack-claude), it is translated for Claude Code at build time instead of asking the model to translate at runtime:
+
+- **Models:** `models.json` assigns each role to tiers (`worker`, `judge`) and each tier to a model per tool (Cursor `grok-4.7-medium`, Claude `sonnet medium`). `build.mjs` writes both sheets from it, so changing a role changes both tools. Don't run `/setup-pstack`; edit `models.json` and run `link.sh`.
+- **Text:** `adapters/claude/substitutions.json` rewrites Cursor tool names, model slugs and paths in a copy of pstack (`Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `claude-opus-5-5-xhigh` → `opus xhigh`, `grok-*` → `inherit-parent`, `.mdc` sheet → `~/.claude/rules/pstack-models.md`). Cursor keeps the original files.
+- **Leftovers:** rare Cursor-only features (Automations, Bugbot setup, cloud dashboards, transcripts) are covered by the short `pstack-runtime.md` rule Claude reads every session.
+- **Drift guard:** after `update-vendor.sh`, `link.sh` runs `build.mjs --check` and stops if a denylisted Cursor term survives. Add a substitution, then rerun.
 
 Groups are for humans only. Tools see flat lists, so names must be unique across groups (`link.sh` refuses duplicates). The folder name is the identity: `update-vendor.sh` rewrites upstream frontmatter `name:` to match it.
 
