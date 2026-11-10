@@ -149,16 +149,6 @@
       "updatedAt": "2026-06-25T06:01:44.783Z",
       "group": "mattpocock"
     },
-    "obsidian-vault": {
-      "source": "mattpocock/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/mattpocock/skills.git",
-      "skillPath": "skills/personal/obsidian-vault/SKILL.md",
-      "skillFolderHash": "1e814d168a215762391895aee58f4de06c8e3b7f",
-      "installedAt": "2026-06-25T06:01:44.783Z",
-      "updatedAt": "2026-06-25T06:01:44.783Z",
-      "group": "mattpocock"
-    },
     "to-spec": {
       "source": "mattpocock/skills",
       "sourceType": "github",

@@ -150,15 +150,6 @@
   },
   {
     "kind": "skill",
-    "name": "obsidian-vault",
-    "group": "mattpocock",
-    "description": "Search, create, and manage notes in the Obsidian vault with wikilinks and index notes. Use when user wants to find, create, or organize notes in Obsidian.",
-    "modelInvocable": true,
-    "source": "mattpocock/skills",
-    "path": "skills/mattpocock/obsidian-vault"
-  },
-  {
-    "kind": "skill",
     "name": "teach",
     "group": "mattpocock",
     "description": "Teach the user a new skill or concept, as lessons in their Learn library.",
@@ -215,19 +206,10 @@
     "kind": "skill",
     "name": "create-pr",
     "group": "personal",
-    "description": "Create a GitHub pull request for the current branch using the gh CLI, following the mandatory Fireflies PR template (What does this PR do? / Type of change / How should this be manually tested? / etc.) and title guidelines. Use whenever the user wants to open, raise, create, or submit a PR or pull request, or asks to \"PR this branch\", and when writing or rewriting a PR title or description.",
+    "description": "Create a GitHub pull request for the current branch using the gh CLI, following the mandatory PR template (What does this PR do? / Type of change / How should this be manually tested? / etc.) and title guidelines. Use whenever the user wants to open, raise, create, or submit a PR or pull request, or asks to \"PR this branch\", and when writing or rewriting a PR title or description.",
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/create-pr"
-  },
-  {
-    "kind": "skill",
-    "name": "ff-pr-review-rules",
-    "group": "personal",
-    "description": "Strict code and PR conventions enforced by reviewers in firefliesai repos (payments-ff, dashboard-ff, admin-dashboard, app, commands-ff, custom-scripts, shared-libs). Load BEFORE writing code and again before opening or updating a PR. Use when implementing a feature, fixing a bug, writing tests, adding a DTO/model/use-case/repository/helper/enum, or creating a PR in a Fireflies repo.",
-    "modelInvocable": true,
-    "source": "local",
-    "path": "skills/personal/ff-pr-review-rules"
   },
   {
     "kind": "skill",
@@ -237,6 +219,15 @@
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/grilling"
+  },
+  {
+    "kind": "skill",
+    "name": "obsidian-vault",
+    "group": "personal",
+    "description": "Search, create, and manage notes in the Obsidian vault with wikilinks and index notes. Use when user wants to find, create, or organize notes in Obsidian.",
+    "modelInvocable": true,
+    "source": "local",
+    "path": "skills/personal/obsidian-vault"
   },
   {
     "kind": "skill",

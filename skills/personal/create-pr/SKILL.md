@@ -1,6 +1,6 @@
 ---
 name: create-pr
-description: Create a GitHub pull request for the current branch using the gh CLI, following the mandatory Fireflies PR template (What does this PR do? / Type of change / How should this be manually tested? / etc.) and title guidelines. Use whenever the user wants to open, raise, create, or submit a PR or pull request, or asks to "PR this branch", and when writing or rewriting a PR title or description.
+description: Create a GitHub pull request for the current branch using the gh CLI, following the mandatory PR template (What does this PR do? / Type of change / How should this be manually tested? / etc.) and title guidelines. Use whenever the user wants to open, raise, create, or submit a PR or pull request, or asks to "PR this branch", and when writing or rewriting a PR title or description.
 ---
 
 
@@ -145,7 +145,7 @@ Keep bullets to **1–3 items**. Start with Fix / Add / Update / Support / Preve
 ### Background context — your common patterns
 
 When available, include in **Any background context you want to provide beyond Shortcut?**:
-- `[Slack thread](https://firefliesapp.slack.com/...)`
+- `[Slack thread](https://<workspace>.slack.com/...)`
 - Related PRs: `It was originally being implemented in: #1710` or `Depends on #4517`
 - `[Figma link](https://www.figma.com/design/...)` for UI work
 - `[Github comment](https://github.com/...)` when continuing discussion from another PR
