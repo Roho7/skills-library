@@ -53,7 +53,7 @@ tags:
 ## Linking
 
 - Use Obsidian `[[wikilinks]]` syntax: `[[Note Title]]`
-- Notes link to dependencies/related notes at the bottom (e.g. `[[Fireflies MOC]] · [[Programming MOC]]`)
+- Notes link to dependencies/related notes at the bottom (e.g. `[[<Work> MOC]] · [[Programming MOC]]`)
 - After creating a note, append a `[[wikilink]]` to it in the relevant MOC so it is discoverable
 
 ## Workflows
