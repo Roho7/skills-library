@@ -22,7 +22,9 @@ for name in $names; do
   src="$clone/$(dirname "$path")"
   if [ ! -f "$src/SKILL.md" ]; then echo "WARN $name: $path missing upstream"; continue; fi
 
-  rsync -a --delete --exclude-from="$REPO/.gitignore" "$src/" "$REPO/skills/$name/"
+  dest="$(ls -d "$REPO"/skills/*/"$name" 2>/dev/null | head -1)"
+  if [ -z "$dest" ]; then echo "skip $name: not in any skills/<group>/ folder"; continue; fi
+  rsync -a --delete --exclude-from="$REPO/.gitignore" "$src/" "$dest/"
   now="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   jq --arg n "$name" --arg t "$now" '.skills[$n].updatedAt = $t' "$LOCK" > "$LOCK.tmp" && mv "$LOCK.tmp" "$LOCK"
   echo "updated $name"
