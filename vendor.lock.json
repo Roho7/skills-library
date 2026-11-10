@@ -8,7 +8,8 @@
       "skillPath": "skills/find-skills/SKILL.md",
       "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
       "installedAt": "2026-01-28T04:09:35.062Z",
-      "updatedAt": "2026-01-28T04:09:35.062Z"
+      "updatedAt": "2026-01-28T04:09:35.062Z",
+      "group": "third-party"
     },
     "grill-me": {
       "source": "mattpocock/skills",
@@ -18,7 +19,8 @@
       "skillFolderHash": "8320e7b87f7b208f50ce165b1dd43d1e93c8e801",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-03-18T03:08:05.460Z",
-      "updatedAt": "2026-07-09T03:07:28.722Z"
+      "updatedAt": "2026-07-09T03:07:28.722Z",
+      "group": "mattpocock"
     },
     "shadcn": {
       "source": "shadcn/ui",
@@ -27,7 +29,8 @@
       "skillPath": "skills/shadcn/SKILL.md",
       "skillFolderHash": "a8404703769866faf15bee897c9ae6e252ac2d35",
       "installedAt": "2026-05-16T09:58:57.861Z",
-      "updatedAt": "2026-05-16T09:58:57.861Z"
+      "updatedAt": "2026-05-16T09:58:57.861Z",
+      "group": "third-party"
     },
     "higgsfield-generate": {
       "source": "higgsfield-ai/skills",
@@ -36,7 +39,8 @@
       "skillPath": "higgsfield-generate/SKILL.md",
       "skillFolderHash": "97cee7b0253d96a1b8f0b9057e2b38f8c87d5ed5",
       "installedAt": "2026-05-17T03:30:10.578Z",
-      "updatedAt": "2026-05-17T03:30:10.578Z"
+      "updatedAt": "2026-05-17T03:30:10.578Z",
+      "group": "higgsfield"
     },
     "higgsfield-marketplace-cards": {
       "source": "higgsfield-ai/skills",
@@ -45,7 +49,8 @@
       "skillPath": "higgsfield-marketplace-cards/SKILL.md",
       "skillFolderHash": "3a6198773dc67933ec32c3c37a4ec862358ee3dd",
       "installedAt": "2026-05-17T03:30:10.579Z",
-      "updatedAt": "2026-05-17T03:30:10.579Z"
+      "updatedAt": "2026-05-17T03:30:10.579Z",
+      "group": "higgsfield"
     },
     "higgsfield-product-photoshoot": {
       "source": "higgsfield-ai/skills",
@@ -54,7 +59,8 @@
       "skillPath": "higgsfield-product-photoshoot/SKILL.md",
       "skillFolderHash": "7e7b7804228239580d00d6bf210e734940d97b44",
       "installedAt": "2026-05-17T03:30:10.580Z",
-      "updatedAt": "2026-05-17T03:30:10.580Z"
+      "updatedAt": "2026-05-17T03:30:10.580Z",
+      "group": "higgsfield"
     },
     "higgsfield-soul-id": {
       "source": "higgsfield-ai/skills",
@@ -63,7 +69,8 @@
       "skillPath": "higgsfield-soul-id/SKILL.md",
       "skillFolderHash": "69657b523779a7cac2702c14a96c44f5b989c52e",
       "installedAt": "2026-05-17T03:30:10.581Z",
-      "updatedAt": "2026-05-17T03:30:10.581Z"
+      "updatedAt": "2026-05-17T03:30:10.581Z",
+      "group": "higgsfield"
     },
     "ask-matt": {
       "source": "mattpocock/skills",
@@ -73,7 +80,8 @@
       "skillFolderHash": "e0bda11b432c90bb79f9a7a746c86c84c7ad0143",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.777Z",
-      "updatedAt": "2026-06-25T06:01:44.777Z"
+      "updatedAt": "2026-06-25T06:01:44.777Z",
+      "group": "mattpocock"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -83,7 +91,8 @@
       "skillFolderHash": "c5dfc023e5ae146a4ceb9c509024f6ffe13db4a3",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.780Z",
-      "updatedAt": "2026-06-25T06:01:44.780Z"
+      "updatedAt": "2026-06-25T06:01:44.780Z",
+      "group": "mattpocock"
     },
     "diagnosing-bugs": {
       "source": "mattpocock/skills",
@@ -93,7 +102,8 @@
       "skillFolderHash": "0ecacff09e31245c34727abe7cb7cff71f615a35",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.780Z",
-      "updatedAt": "2026-06-25T06:01:44.780Z"
+      "updatedAt": "2026-06-25T06:01:44.780Z",
+      "group": "mattpocock"
     },
     "handoff": {
       "source": "mattpocock/skills",
@@ -103,7 +113,8 @@
       "skillFolderHash": "aa82ffd61d7a3bda110060b4e24ec782b983cb8d",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.781Z",
-      "updatedAt": "2026-06-25T06:01:44.781Z"
+      "updatedAt": "2026-06-25T06:01:44.781Z",
+      "group": "mattpocock"
     },
     "improve-codebase-architecture": {
       "source": "mattpocock/skills",
@@ -113,7 +124,8 @@
       "skillFolderHash": "e5beae48471adf87c513b5cbcb0ca347467546da",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.782Z",
-      "updatedAt": "2026-06-25T06:01:44.782Z"
+      "updatedAt": "2026-06-25T06:01:44.782Z",
+      "group": "mattpocock"
     },
     "teach": {
       "source": "mattpocock/skills",
@@ -123,7 +135,8 @@
       "skillFolderHash": "3b6a4245e2aaeacb308ba6175ab3e7f2e43b0c47",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.782Z",
-      "updatedAt": "2026-07-09T03:07:28.721Z"
+      "updatedAt": "2026-07-09T03:07:28.721Z",
+      "group": "mattpocock"
     },
     "writing-great-skills": {
       "source": "mattpocock/skills",
@@ -133,7 +146,8 @@
       "skillFolderHash": "0875ef784dfdf0a3860f1cdc3937c2796b0314a5",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-06-25T06:01:44.783Z",
-      "updatedAt": "2026-06-25T06:01:44.783Z"
+      "updatedAt": "2026-06-25T06:01:44.783Z",
+      "group": "mattpocock"
     },
     "obsidian-vault": {
       "source": "mattpocock/skills",
@@ -142,7 +156,8 @@
       "skillPath": "skills/personal/obsidian-vault/SKILL.md",
       "skillFolderHash": "1e814d168a215762391895aee58f4de06c8e3b7f",
       "installedAt": "2026-06-25T06:01:44.783Z",
-      "updatedAt": "2026-06-25T06:01:44.783Z"
+      "updatedAt": "2026-06-25T06:01:44.783Z",
+      "group": "mattpocock"
     },
     "to-spec": {
       "source": "mattpocock/skills",
@@ -152,7 +167,8 @@
       "skillFolderHash": "b2f449aa3da9578b08dcea74afd9adee20285586",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T03:07:28.718Z",
-      "updatedAt": "2026-07-09T03:07:28.718Z"
+      "updatedAt": "2026-07-09T03:07:28.718Z",
+      "group": "mattpocock"
     },
     "to-tickets": {
       "source": "mattpocock/skills",
@@ -162,7 +178,8 @@
       "skillFolderHash": "b62245172caa8bcc75b490c665566e9ec999cda8",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T03:07:28.720Z",
-      "updatedAt": "2026-07-09T03:07:28.720Z"
+      "updatedAt": "2026-07-09T03:07:28.720Z",
+      "group": "mattpocock"
     },
     "grill-with-docs": {
       "source": "mattpocock/skills",
@@ -172,7 +189,8 @@
       "skillFolderHash": "21adba95de7d93065d9fec725ddf37f871e01d05",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T03:07:28.721Z",
-      "updatedAt": "2026-07-09T03:07:28.721Z"
+      "updatedAt": "2026-07-09T03:07:28.721Z",
+      "group": "mattpocock"
     },
     "implement": {
       "source": "mattpocock/skills",
@@ -182,7 +200,8 @@
       "skillFolderHash": "aa65990650368f020166bc28d6c05b5b34592c97",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T03:07:28.723Z",
-      "updatedAt": "2026-07-09T03:07:28.723Z"
+      "updatedAt": "2026-07-09T03:07:28.723Z",
+      "group": "mattpocock"
     },
     "code-review": {
       "source": "mattpocock/skills",
@@ -192,7 +211,8 @@
       "skillFolderHash": "9df6fdac9c49f20944411ee45e1582e718d9a657",
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-09T03:07:28.723Z",
-      "updatedAt": "2026-07-09T03:07:28.723Z"
+      "updatedAt": "2026-07-09T03:07:28.723Z",
+      "group": "mattpocock"
     },
     "scaffold-docs": {
       "source": "dbreunig/scaffold-docs-skill",
@@ -201,7 +221,8 @@
       "skillPath": "SKILL.md",
       "skillFolderHash": "e234e13eb1ab9561a1da9a5a150c3deee3c515b8",
       "installedAt": "2026-11-05T11:52:38.898Z",
-      "updatedAt": "2026-11-05T11:52:38.898Z"
+      "updatedAt": "2026-11-05T11:52:38.898Z",
+      "group": "third-party"
     },
     "remotion-best-practices": {
       "source": "remotion-dev/skills",
@@ -210,7 +231,8 @@
       "skillPath": "skills/remotion-best-practices/SKILL.md",
       "skillFolderHash": "b4b9ee33f89cf22644190efa3823b530b053b985",
       "installedAt": "2026-11-07T09:53:26.807Z",
-      "updatedAt": "2026-11-07T09:53:26.807Z"
+      "updatedAt": "2026-11-07T09:53:26.807Z",
+      "group": "remotion"
     },
     "remotion-captions": {
       "source": "remotion-dev/skills",
@@ -219,7 +241,8 @@
       "skillPath": "skills/remotion-captions/SKILL.md",
       "skillFolderHash": "46f3ed304d031b174b8a72c929072727b6585d7a",
       "installedAt": "2026-11-07T09:53:26.809Z",
-      "updatedAt": "2026-11-07T09:53:26.809Z"
+      "updatedAt": "2026-11-07T09:53:26.809Z",
+      "group": "remotion"
     },
     "remotion-create": {
       "source": "remotion-dev/skills",
@@ -228,7 +251,8 @@
       "skillPath": "skills/remotion-create/SKILL.md",
       "skillFolderHash": "9f5561666b0b6ce826be36532437b6ece52cb714",
       "installedAt": "2026-11-07T09:53:26.810Z",
-      "updatedAt": "2026-11-07T09:53:26.810Z"
+      "updatedAt": "2026-11-07T09:53:26.810Z",
+      "group": "remotion"
     },
     "remotion-docs": {
       "source": "remotion-dev/skills",
@@ -237,7 +261,8 @@
       "skillPath": "skills/remotion-docs/SKILL.md",
       "skillFolderHash": "eface912db6bfd354116e60c07241332e1cabaa6",
       "installedAt": "2026-11-07T09:53:26.815Z",
-      "updatedAt": "2026-11-07T09:53:26.815Z"
+      "updatedAt": "2026-11-07T09:53:26.815Z",
+      "group": "remotion"
     },
     "remotion-interactivity": {
       "source": "remotion-dev/skills",
@@ -246,7 +271,8 @@
       "skillPath": "skills/remotion-interactivity/SKILL.md",
       "skillFolderHash": "8c56db1c95a180c0cd2301e6dbfb7f2d5ff60dc3",
       "installedAt": "2026-11-07T09:53:26.834Z",
-      "updatedAt": "2026-11-07T09:53:26.834Z"
+      "updatedAt": "2026-11-07T09:53:26.834Z",
+      "group": "remotion"
     },
     "remotion-maps": {
       "source": "remotion-dev/skills",
@@ -255,7 +281,8 @@
       "skillPath": "skills/remotion-maps/SKILL.md",
       "skillFolderHash": "d0ce8d225c5e1401c233701754fdd55012a55af4",
       "installedAt": "2026-11-07T09:53:26.837Z",
-      "updatedAt": "2026-11-07T09:53:26.837Z"
+      "updatedAt": "2026-11-07T09:53:26.837Z",
+      "group": "remotion"
     },
     "remotion-markup": {
       "source": "remotion-dev/skills",
@@ -264,7 +291,8 @@
       "skillPath": "skills/remotion-markup/SKILL.md",
       "skillFolderHash": "8a3c697202d11c7914a100aae05d2ffe1b474018",
       "installedAt": "2026-11-07T09:53:26.838Z",
-      "updatedAt": "2026-11-07T09:53:26.838Z"
+      "updatedAt": "2026-11-07T09:53:26.838Z",
+      "group": "remotion"
     },
     "remotion-multimedia": {
       "source": "remotion-dev/skills",
@@ -273,7 +301,8 @@
       "skillPath": "skills/remotion-multimedia/SKILL.md",
       "skillFolderHash": "0ed850ecc4c6adcabfacf8e70cad9e895c1a3ebc",
       "installedAt": "2026-11-07T09:53:26.840Z",
-      "updatedAt": "2026-11-07T09:53:26.840Z"
+      "updatedAt": "2026-11-07T09:53:26.840Z",
+      "group": "remotion"
     },
     "remotion-render": {
       "source": "remotion-dev/skills",
@@ -282,7 +311,8 @@
       "skillPath": "skills/remotion-render/SKILL.md",
       "skillFolderHash": "b6b43b1dc59a51269ff8334a86d882392b110d0e",
       "installedAt": "2026-11-07T09:53:26.841Z",
-      "updatedAt": "2026-11-07T09:53:26.841Z"
+      "updatedAt": "2026-11-07T09:53:26.841Z",
+      "group": "remotion"
     },
     "remotion-saas": {
       "source": "remotion-dev/skills",
@@ -291,7 +321,8 @@
       "skillPath": "skills/remotion-saas/SKILL.md",
       "skillFolderHash": "0371545c7f1cb0fe5b422108ffd396b0c06573a7",
       "installedAt": "2026-11-07T09:53:26.841Z",
-      "updatedAt": "2026-11-07T09:53:26.841Z"
+      "updatedAt": "2026-11-07T09:53:26.841Z",
+      "group": "remotion"
     },
     "remotion-studio": {
       "source": "remotion-dev/skills",
@@ -300,7 +331,8 @@
       "skillPath": "skills/remotion-studio/SKILL.md",
       "skillFolderHash": "82bfbd0c0b14a4e2c879403247b98e643963b696",
       "installedAt": "2026-11-07T09:53:26.842Z",
-      "updatedAt": "2026-11-07T09:53:26.842Z"
+      "updatedAt": "2026-11-07T09:53:26.842Z",
+      "group": "remotion"
     },
     "blog-writing-guide": {
       "source": "getsentry/skills",
@@ -309,7 +341,550 @@
       "skillPath": "skills/blog-writing-guide/SKILL.md",
       "skillFolderHash": "507838c69c24d3571cc928d3f6d00c7075f02213",
       "installedAt": "2026-11-09T18:10:34.742Z",
-      "updatedAt": "2026-11-09T18:10:34.742Z"
+      "updatedAt": "2026-11-09T18:10:34.742Z",
+      "group": "third-party"
+    },
+    "architect": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/architect/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:02Z"
+    },
+    "arena": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/arena/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:02Z"
+    },
+    "automate-me": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/automate-me/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:02Z"
+    },
+    "benchmark-checklist": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/benchmark-checklist/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "blast-radius": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/blast-radius/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "bro": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/bro/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "correct": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/correct/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "create-formal-verification-skill": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/create-formal-verification-skill/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "create-verification-skill": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/create-verification-skill/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "figure-it-out": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/figure-it-out/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "how": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/how/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "in-your-own-words": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/in-your-own-words/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "interrogate": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/interrogate/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "ketchup": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/ketchup/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "ketchup-video": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/ketchup-video/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "maintain-formal-verification-skill": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/maintain-formal-verification-skill/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "maintain-verification-skill": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/maintain-verification-skill/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "make-bot-ui": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/make-bot-ui/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "no-comments": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/no-comments/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:03Z"
+    },
+    "poteto-help": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/poteto-help/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "poteto-mode": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/poteto-mode/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-attack-the-premise": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-attack-the-premise/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-boundary-discipline": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-boundary-discipline/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-build-the-lever": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-build-the-lever/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-encode-lessons-in-structure": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-exhaust-the-design-space": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-exhaust-the-design-space/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-experience-first": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-experience-first/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-explain-the-number": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-explain-the-number/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-fix-root-causes": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-fix-root-causes/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-foundational-thinking": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-foundational-thinking/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-guard-the-context-window": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-guard-the-context-window/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-laziness-protocol": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-laziness-protocol/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-make-operations-idempotent": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-make-operations-idempotent/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-migrate-callers-then-delete-legacy-apis": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-minimize-reader-load": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-minimize-reader-load/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-model-the-domain": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-model-the-domain/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-never-block-on-the-human": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-never-block-on-the-human/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:04Z"
+    },
+    "principle-outcome-oriented-execution": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-outcome-oriented-execution/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-prove-it-works": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-prove-it-works/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-redesign-from-first-principles": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-redesign-from-first-principles/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-separate-before-serializing-shared-state": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-sequence-verifiable-units": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-sequence-verifiable-units/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-subtract-before-you-add": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-subtract-before-you-add/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-test-behavior-not-implementation": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-test-behavior-not-implementation/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "principle-type-system-discipline": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/principle-type-system-discipline/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "recall": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/recall/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "reflect": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/reflect/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "setup-pstack": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/setup-pstack/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "sharpen": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/sharpen/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "show-me-your-work": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/show-me-your-work/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "statechart": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/statechart/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "swarm": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/swarm/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:05Z"
+    },
+    "tdd": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/tdd/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "pstack-teach": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/teach/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "technical-writing": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/technical-writing/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "typescript-best-practices": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/typescript-best-practices/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "unslop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/unslop/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "why": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/skills/why/SKILL.md",
+      "group": "pstack",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "poteto-agent": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/agents/poteto-agent.md",
+      "group": "pstack",
+      "kind": "agent",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "comment-sicko": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "pstack/agents/comment-sicko.md",
+      "group": "pstack",
+      "kind": "agent",
+      "installedAt": "2026-11-10T08:47:59Z",
+      "updatedAt": "2026-11-10T08:48:06Z"
     }
   },
   "dismissed": {

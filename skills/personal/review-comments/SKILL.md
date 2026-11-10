@@ -1,4 +1,4 @@
-    ---
+---
 name: review-comments
 description: Walk through a PR's unresolved review comments one at a time — brief, score, and fix each with the user's sign-off before moving on. Usage — /review-comments <PR number> [reviewer] [window, e.g. "last 5 days"]
 disable-model-invocation: true
