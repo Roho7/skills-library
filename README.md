@@ -5,10 +5,9 @@ Single source of truth for every agent skill on my machines. Edit skills **here 
 ## Layout
 
 ```
-skills/<name>/SKILL.md        global skills (Claude Code, Cursor, any ~/.agents reader)
-projects/<repo>/<name>        project-only skills, copied into ~/Documents/MAIN/CODE/<repo>/.claude/skills
+skills/<name>/SKILL.md        global skills (Claude Code, Cursor, any ~/.agents reader). Project skills stay in their own repos.
 vendor.lock.json              upstream source of each third-party skill in skills/
-scripts/link.sh               symlink skills/* into ~/.claude/skills, ~/.agents/skills, ~/.cursor/skills; copy projects/*
+scripts/link.sh               symlink skills/* into ~/.claude/skills, ~/.agents/skills, ~/.cursor/skills
 scripts/update-vendor.sh      re-pull third-party skills from upstream, review with git diff
 ```
 
@@ -27,7 +26,6 @@ git clone https://github.com/Roho7/skills ~/Documents/MAIN/CODE/skills
 | Add own skill | Create `skills/<name>/SKILL.md`, run `scripts/link.sh` |
 | Add third-party skill | `npx skills add <repo>` then copy its entry from `~/.agents/.skill-lock.json` into `vendor.lock.json` and its folder into `skills/`, run `scripts/link.sh` |
 | Update third-party skills | `scripts/update-vendor.sh [name ...]`, review `git diff`, commit |
-| Edit project skill | Edit `projects/<repo>/<name>`, run `scripts/link.sh`, commit both repos |
 
 ## Origins
 
