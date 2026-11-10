@@ -875,6 +875,15 @@
       "kind": "agent",
       "installedAt": "2026-11-10T08:47:59Z",
       "updatedAt": "2026-11-10T08:48:06Z"
+    },
+    "grilling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/grilling/SKILL.md",
+      "group": "mattpocock",
+      "installedAt": "2026-11-10T09:13:12Z",
+      "updatedAt": "2026-11-10T09:13:13Z"
     }
   },
   "dismissed": {

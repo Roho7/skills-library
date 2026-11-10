@@ -123,6 +123,15 @@
   },
   {
     "kind": "skill",
+    "name": "grilling",
+    "group": "mattpocock",
+    "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.",
+    "modelInvocable": true,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/grilling"
+  },
+  {
+    "kind": "skill",
     "name": "handoff",
     "group": "mattpocock",
     "description": "Compact the current conversation into a handoff document for another agent to pick up.",
@@ -210,15 +219,6 @@
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/create-pr"
-  },
-  {
-    "kind": "skill",
-    "name": "grilling",
-    "group": "personal",
-    "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.",
-    "modelInvocable": true,
-    "source": "local",
-    "path": "skills/personal/grilling"
   },
   {
     "kind": "skill",
