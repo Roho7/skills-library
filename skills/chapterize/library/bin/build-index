@@ -1,0 +1,334 @@
+#!/usr/bin/env python3
+"""Rebuild the Learn library's generated pages.
+
+Writes:
+  - index.html at the library root (every shelf)
+  - <shelf>/index.html (the shelf hub: chapters, lessons, reference, learning records)
+  - the series nav inside every page, between <!-- learn:nav --> markers
+
+Everything is derived from the files themselves: a page's type and number come
+from its folder and filename, its name from <title>, its summary from
+<meta name="description">, its links from <meta name="learn:builds-on">, and
+chapter status from BOOK.md. Safe to run any time; it only rewrites what changed.
+"""
+
+import html
+import os
+import re
+import sys
+from datetime import datetime
+from pathlib import Path
+
+LIB = Path(__file__).resolve().parent.parent
+NOT_SHELVES = {"assets", "bin", "formats"}
+KINDS = [("chapters", "Chapter"), ("lessons", "Lesson"), ("reference", "Reference")]
+NAV_START, NAV_END = "<!-- learn:nav -->", "<!-- /learn:nav -->"
+BOOK_LINE = re.compile(
+    r"^\s*(\d+)\.\s+(?:\[(?P<title>.+?)\]\((?P<path>.+?)\)|(?P<plain>.+?))\s+[—-]+\s+(?P<status>planned|written|done)\s*$"
+)
+
+esc = html.escape
+
+
+def read(path):
+    return path.read_text(encoding="utf-8") if path.exists() else ""
+
+
+def first_heading(text, fallback):
+    m = re.search(r"^#\s+(.+)$", text, re.M)
+    return m.group(1).strip() if m else fallback
+
+
+def section(text, name):
+    """First paragraph under a '## name' heading."""
+    m = re.search(rf"^##\s+{name}\s*\n+(.+?)(?:\n\s*\n|\n#|\Z)", text, re.M | re.S)
+    return " ".join(m.group(1).split()) if m else ""
+
+
+def meta(doc, name):
+    return [
+        html.unescape(m.group(1))
+        for m in re.finditer(rf'<meta\s+name="{re.escape(name)}"\s+content="([^"]*)"', doc)
+    ]
+
+
+def number_of(path):
+    m = re.match(r"(\d+)-", path.name)
+    return int(m.group(1)) if m else None
+
+
+class Page:
+    def __init__(self, shelf, kind, label, path):
+        self.shelf, self.kind, self.label, self.path = shelf, kind, label, path
+        self.rel = f"{kind}/{path.name}"
+        doc = read(path)
+        m = re.search(r"<title>(.*?)</title>", doc, re.S)
+        self.title = html.unescape(m.group(1).strip()) if m else path.stem
+        self.description = (meta(doc, "description") or [""])[0]
+        self.builds_on = meta(doc, "learn:builds-on")
+        self.number = number_of(path)
+        self.mtime = path.stat().st_mtime
+        self.status = None
+
+
+class Shelf:
+    def __init__(self, path):
+        self.path, self.name = path, path.name
+        mission = read(path / "MISSION.md")
+        title = first_heading(mission, path.name.replace("-", " ").title())
+        self.title = re.sub(r"^Mission:\s*", "", title)
+        self.why = section(mission, "Why")
+
+        self.pages = {}
+        for kind, label in KINDS:
+            folder = path / kind
+            files = sorted(folder.glob("*.html")) if folder.is_dir() else []
+            self.pages[kind] = [Page(self, kind, label, f) for f in files]
+
+        book = read(path / "BOOK.md")
+        self.book_title = first_heading(book, "") if book else ""
+        self.chapters = self._chapters(book)
+        self.lessons = sorted(self.pages["lessons"], key=lambda p: (p.number or 0, p.path.name))
+        self.reference = sorted(self.pages["reference"], key=lambda p: p.title.lower())
+
+        records = path / "learning-records"
+        self.records = [
+            first_heading(read(f), f.stem) for f in sorted(records.glob("*.md"))
+        ] if records.is_dir() else []
+
+    def _chapters(self, book):
+        """BOOK.md order and status, plus any chapter files it doesn't list."""
+        by_rel = {p.rel: p for p in self.pages["chapters"]}
+        entries = []
+        for line in book.splitlines():
+            m = BOOK_LINE.match(line)
+            if not m:
+                continue
+            page = by_rel.pop(m.group("path"), None) if m.group("path") else None
+            entries.append({
+                "title": m.group("title") or m.group("plain"),
+                "status": m.group("status") if page or m.group("status") == "planned" else "planned",
+                "page": page,
+            })
+            if page:
+                page.status = entries[-1]["status"]
+        for page in sorted(by_rel.values(), key=lambda p: (p.number or 0, p.path.name)):
+            page.status = "written"
+            entries.append({"title": page.title, "status": "written", "page": page})
+        return entries
+
+    @property
+    def all_pages(self):
+        return [p for kind, _ in KINDS for p in self.pages[kind]]
+
+    @property
+    def updated(self):
+        times = [p.mtime for p in self.all_pages]
+        return max(times) if times else self.path.stat().st_mtime
+
+
+# ---------- rendering ----------
+
+def page_shell(title, body, depth):
+    css = "../" * depth + "assets/library.css"
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)}</title>
+<link rel="stylesheet" href="{css}">
+</head>
+<body>
+<main class="index">
+<!-- Generated by bin/build-index. Do not edit by hand. -->
+{body}
+</main>
+</body>
+</html>
+"""
+
+
+def item(href, title, description="", tag=""):
+    tag_html = f'<span class="status status-{esc(tag)}">{esc(tag)}</span>' if tag else ""
+    desc = f'<span class="item-desc">{esc(description)}</span>' if description else ""
+    if href:
+        name = f'<a href="{esc(href)}">{esc(title)}</a>'
+    else:
+        name = f'<span class="item-planned">{esc(title)}</span>'
+    return f"<li>{name}{tag_html}{desc}</li>"
+
+
+def plural(n, word):
+    return f"{n} {word}{'' if n == 1 else 's'}"
+
+
+def shelf_summary(shelf):
+    parts = []
+    if shelf.chapters:
+        done = sum(1 for c in shelf.chapters if c["status"] == "done")
+        parts.append(f"{done} of {plural(len(shelf.chapters), 'chapter')} done")
+    if shelf.lessons:
+        parts.append(plural(len(shelf.lessons), "lesson"))
+    if shelf.reference:
+        parts.append(plural(len(shelf.reference), "reference"))
+    return " · ".join(parts) or "empty shelf"
+
+
+def render_shelf(shelf):
+    out = [
+        '<p class="meta"><a href="../index.html">Library</a> · Shelf</p>',
+        f"<h1>{esc(shelf.title)}</h1>",
+    ]
+    if shelf.why:
+        out.append(f'<p class="subtitle">{esc(shelf.why)}</p>')
+    out.append(f'<p class="meta">{esc(shelf_summary(shelf))}</p>')
+
+    if shelf.chapters:
+        heading = f"Chapters: {shelf.book_title}" if shelf.book_title else "Chapters"
+        out.append(f"<h2>{esc(heading)}</h2><ol class=\"items\">")
+        for c in shelf.chapters:
+            p = c["page"]
+            out.append(item(p.rel if p else None, c["title"], p.description if p else "", c["status"]))
+        out.append("</ol>")
+
+    if shelf.lessons:
+        out.append('<h2>Lessons</h2><ol class="items">')
+        out += [item(p.rel, p.title, p.description) for p in shelf.lessons]
+        out.append("</ol>")
+
+    if shelf.reference:
+        out.append('<h2>Reference</h2><ul class="items">')
+        out += [item(p.rel, p.title, p.description) for p in shelf.reference]
+        out.append("</ul>")
+
+    if shelf.records:
+        out.append('<h2>What you\'ve learned</h2><ul class="records">')
+        out += [f"<li>{esc(r)}</li>" for r in shelf.records]
+        out.append("</ul>")
+
+    return page_shell(f"{shelf.title} · Library", "\n".join(out), 1)
+
+
+def render_library(shelves):
+    out = ['<p class="meta">Library</p>', "<h1>Learn</h1>",
+           f'<p class="subtitle">{plural(len(shelves), "shelf").replace("shelfs", "shelves")}, '
+           "lessons from <code>/teach</code> and chapters from <code>/chapterize</code>.</p>"]
+
+    if shelves:
+        out.append('<div class="shelves">')
+        for s in sorted(shelves, key=lambda s: -s.updated):
+            why = f"<p>{esc(s.why)}</p>" if s.why else ""
+            date = datetime.fromtimestamp(s.updated).strftime("%-d %b %Y")
+            out.append(
+                f'<a class="shelf-card" href="{esc(s.name)}/index.html">'
+                f"<h2>{esc(s.title)}</h2>{why}"
+                f'<p class="meta">{esc(shelf_summary(s))} · updated {date}</p></a>'
+            )
+        out.append("</div>")
+
+    recent = sorted((p for s in shelves for p in s.all_pages), key=lambda p: -p.mtime)[:8]
+    if recent:
+        out.append('<h2>Recently added</h2><ul class="items">')
+        for p in recent:
+            out.append(item(f"{p.shelf.name}/{p.rel}", p.title, f"{p.label} · {p.shelf.title}"))
+        out.append("</ul>")
+
+    return page_shell("Learn · Library", "\n".join(out), 0)
+
+
+def render_nav(page, series, built_on_by):
+    """Prev/next within the page's series, plus builds-on links both ways."""
+    rows = []
+    links = []
+    if page in series:
+        i = series.index(page)
+        prev = series[i - 1] if i > 0 else None
+        nxt = series[i + 1] if i + 1 < len(series) else None
+        links.append(f'<a href="{esc(prev.path.name)}">← {esc(prev.title)}</a>' if prev else "<span></span>")
+        links.append(f'<a href="../index.html">{esc(page.shelf.title)}</a>')
+        links.append(f'<a href="{esc(nxt.path.name)}">{esc(nxt.title)} →</a>' if nxt else "<span></span>")
+    else:
+        links = ["<span></span>", f'<a href="../index.html">{esc(page.shelf.title)}</a>', "<span></span>"]
+    rows.append(f'<div class="learn-nav-row">{"".join(links)}</div>')
+
+    def related(label, targets):
+        if targets:
+            items = ", ".join(f'<a href="{esc(href)}">{esc(title)}</a>' for href, title in targets)
+            rows.append(f'<p class="learn-nav-related"><span class="meta">{label}</span> {items}</p>')
+
+    related("Builds on", [(href_from(page, t), t.title) for t in page.resolved_builds_on])
+    related("Used by", [(href_from(page, t), t.title) for t in built_on_by])
+    return f'{NAV_START}\n<nav class="learn-nav">\n{chr(10).join(rows)}\n</nav>\n{NAV_END}'
+
+
+def href_from(page, target):
+    """Link from one page to another; every page sits at <shelf>/<kind>/<file>."""
+    if target.shelf is page.shelf:
+        return target.path.name if target.kind == page.kind else f"../{target.rel}"
+    return f"../../{target.shelf.name}/{target.rel}"
+
+
+def inject_nav(page, nav):
+    doc = read(page.path)
+    if NAV_START in doc and NAV_END in doc:
+        new = re.sub(re.escape(NAV_START) + r".*?" + re.escape(NAV_END), lambda _: nav, doc, flags=re.S)
+    elif "</main>" in doc:
+        new = doc.replace("</main>", f"{nav}\n</main>", 1)
+    else:
+        new = doc.replace("</body>", f"{nav}\n</body>", 1)
+    if new != doc:
+        stat = page.path.stat()
+        page.path.write_text(new, encoding="utf-8")
+        os.utime(page.path, (stat.st_atime, stat.st_mtime))  # nav isn't a content change
+        return True
+    return False
+
+
+def write_if_changed(path, text):
+    if read(path) != text:
+        path.write_text(text, encoding="utf-8")
+        return True
+    return False
+
+
+def main():
+    shelves = [
+        Shelf(d) for d in sorted(LIB.iterdir())
+        if d.is_dir() and d.name not in NOT_SHELVES and not d.name.startswith(".")
+    ]
+    pages_by_key = {(p.shelf.name, p.rel): p for s in shelves for p in s.all_pages}
+
+    # Resolve builds-on paths (relative to the shelf) and collect backlinks.
+    backlinks = {}
+    for s in shelves:
+        for p in s.all_pages:
+            p.resolved_builds_on = []
+            for target in p.builds_on:
+                shelf_name, _, rel = os.path.normpath(f"{s.name}/{target}").partition("/")
+                hit = pages_by_key.get((shelf_name, rel))
+                if not hit:
+                    print(f"warning: {s.name}/{p.rel} builds on missing page {target}", file=sys.stderr)
+                    continue
+                p.resolved_builds_on.append(hit)
+                backlinks.setdefault(id(hit), []).append(p)
+
+    changed = []
+    for s in shelves:
+        chapter_series = [c["page"] for c in s.chapters if c["page"]]
+        series = {"chapters": chapter_series, "lessons": s.lessons, "reference": []}
+        for p in s.all_pages:
+            if inject_nav(p, render_nav(p, series[p.kind], backlinks.get(id(p), []))):
+                changed.append(f"{s.name}/{p.rel}")
+        if write_if_changed(s.path / "index.html", render_shelf(s)):
+            changed.append(f"{s.name}/index.html")
+
+    if write_if_changed(LIB / "index.html", render_library(shelves)):
+        changed.append("index.html")
+
+    print(f"{plural(len(shelves), 'shelf').replace('shelfs', 'shelves')}; "
+          + (f"updated {', '.join(changed)}" if changed else "nothing changed"))
+
+
+if __name__ == "__main__":
+    main()

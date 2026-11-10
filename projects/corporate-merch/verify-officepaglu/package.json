@@ -1,0 +1,9 @@
+{
+  "name": "verify-officepaglu",
+  "private": true,
+  "type": "module",
+  "bin": { "op": "./op.mjs" },
+  "dependencies": {
+    "playwright-core": "1.56.1"
+  }
+}
