@@ -303,15 +303,6 @@
   },
   {
     "kind": "skill",
-    "name": "roho-mode",
-    "group": "personal",
-    "description": "Roho's working style. Sharp, DRY, test driven style of development. Use for /roho-mode or requests to work in Roho's style.",
-    "modelInvocable": false,
-    "source": "local",
-    "path": "skills/personal/roho-mode"
-  },
-  {
-    "kind": "skill",
     "name": "shh",
     "group": "personal",
     "description": "A super quiet way of speaking where one can only utter 3 short sentences",
