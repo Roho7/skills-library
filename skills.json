@@ -746,7 +746,7 @@
     "kind": "skill",
     "name": "setup-pstack",
     "group": "pstack",
-    "description": "Configure which models pstack uses per role and at what reasoning budget. Detects your available models and writes an always-applied rule that overrides the skill defaults. Use for /setup-pstack, \"configure pstack models\", \"pstack budget\", or changing pstack's model choices.",
+    "description": "Configure which models pstack uses per role and at what reasoning budget. Edits models.json in the skills repo and installs the generated per-role model sheets. Use for /setup-pstack, \"configure pstack models\", \"pstack budget\", or changing pstack's model choices.",
     "modelInvocable": true,
     "source": "cursor/plugins",
     "path": "skills/pstack/setup-pstack"

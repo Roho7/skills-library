@@ -28,9 +28,10 @@ models.json                 pstack model policy: roles → tiers → each tool's
 adapters/claude/            Cursor→Claude translation: substitutions.json (build time) + pstack-runtime.md (leftovers, read at runtime)
 generated/                  build output, gitignored: per-tool model sheets + Claude-translated pstack
 skills.json                 generated index of skills + agents, for orchestrators
-vendor.lock.json            upstream of each vendored skill/agent: sourceUrl, skillPath, group, kind
+vendor.lock.json            upstream of each vendored skill/agent: sourceUrl, pinned commit, skillPath, group, kind
+patches/<group>/<name>.patch  local changes to vendored files, re-applied by update-vendor.sh after every pull
 scripts/build.mjs           build generated/ (--check fails on untranslated Cursor terms)
-scripts/update-vendor.sh    re-pull vendored entries from upstream; review with git diff
+scripts/update-vendor.sh    re-pull vendored entries at their pinned commit (--latest to bump), apply patches/; review with git diff
 scripts/index.mjs           regenerate skills.json
 ```
 
@@ -38,8 +39,9 @@ scripts/index.mjs           regenerate skills.json
 
 pstack is written for Cursor. Following [pstack-claude](https://github.com/michael-denyer/pstack-claude), it is translated for Claude Code at build time instead of asking the model to translate at runtime:
 
-- **Models:** `models.json` assigns each role to tiers (`worker`, `judge`) and each tier to a model per tool (Cursor `grok-4.7-medium`, Claude `sonnet medium`). `build.mjs` writes both sheets from it, so changing a role changes both tools. Don't run `/setup-pstack`; edit `models.json`, run `node scripts/build.mjs`, and copy `generated/cursor/pstack-models.mdc` to `~/.cursor/rules/` and `generated/claude/pstack-models.md` to `~/.claude/rules/`.
-- **Text:** `adapters/claude/substitutions.json` rewrites Cursor tool names, model slugs and paths in a copy of pstack (`Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `claude-opus-5-5-xhigh` → `opus xhigh`, `grok-*` → `inherit-parent`, `.mdc` sheet → `~/.claude/rules/pstack-models.md`). Cursor keeps the original files.
+- **Models:** `models.json` is the only place model slugs live. It assigns each role to tiers and each tier to a model per tool: `worker` is Cursor `grok-4.7-medium` / Claude `sonnet medium`, `judge` is `inherit-parent` (the parent chat model) on both, and panel roles (arena, architect, interrogate) get one `judge` and one `worker` seat. `build.mjs` writes both sheets from it, so changing a role changes both tools. Edit `models.json` (or run `/setup-pstack`, which is patched to do that), run `node scripts/build.mjs`, and copy `generated/cursor/pstack-models.mdc` to `~/.cursor/rules/` and `generated/claude/pstack-models.md` to `~/.claude/rules/`. Vendored skills carry no fallback slugs: a role with no sheet line runs on the parent model.
+- **Open gap:** the `arena cross-judge pool` is `inherit-parent` + `worker`, and `inherit-parent` never judges, so a Grok parent on Cursor, and every Claude Code session (`sonnet` is the parent's family), gets no cross-family judge. Add an other-family entry to that role to close it.
+- **Text:** `adapters/claude/substitutions.json` rewrites Cursor tool names and paths in a copy of pstack (`Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `.mdc` sheet → `~/.claude/rules/pstack-models.md`). Model slugs are not rewritten; `--check` fails if one appears. Cursor keeps the original files.
 - **Leftovers:** rare Cursor-only features (Automations, Bugbot setup, cloud dashboards, transcripts) are covered by the short `pstack-runtime.md` rule Claude reads every session.
 - **Drift guard:** after `update-vendor.sh`, run `node scripts/build.mjs --check`; it fails if a denylisted Cursor term survives. Add a substitution, then rerun.
 - **Not installed:** the skills in `~/.agents/skills` are the tool-agnostic `skills/pstack` copies. The Claude-translated build in `generated/claude/skills` is no longer installed anywhere.
@@ -65,9 +67,9 @@ Sandboxes and remote workers should clone at a pinned commit so a whole run uses
 | Edit or add a skill | Edit `~/.agents/skills/<name>`, then back it up: `rsync -a --delete ~/.agents/skills/<name>/ skills/<group>/<name>/`, run `node scripts/index.mjs`, commit |
 | New skill for Claude | Also run `ln -s ~/.agents/skills/<name> ~/.claude/skills/` (Cursor sees it through the folder link) |
 | Add third-party skill | Add an entry to `vendor.lock.json` (`sourceUrl`, `skillPath`, `group`), run `scripts/update-vendor.sh <name>`, then copy it into `~/.agents/skills` |
-| Change vendored behaviour | Add a rule in `rules/`, don't edit vendored files (updates overwrite them) |
+| Change vendored behaviour | Prefer a rule in `rules/`. If the vendored text itself must change: `scripts/update-vendor.sh --no-patch <name>`, `git add` it, edit, save `git diff -- skills/<group>/<name>` as `patches/<group>/<name>.patch`, then rerun without `--no-patch` |
 | Rename / delete | Do it in `~/.agents/skills` and fix the `~/.claude/skills` link, then mirror it here |
-| Update vendored skills | `scripts/update-vendor.sh [name ...]`, review `git diff`, commit, copy changed folders into `~/.agents/skills` |
+| Update vendored skills | `scripts/update-vendor.sh --latest [name ...]` (moves the pins), fix any patch it reports as FAIL, run `node scripts/build.mjs --check`, review `git diff`, commit, copy changed folders into `~/.agents/skills` |
 
 ## Origins without a lock entry
 
