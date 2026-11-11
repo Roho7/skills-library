@@ -1,28 +1,31 @@
 {
-  "budget": "small (medium)",
-  "TODO": "arena cross-judge pool: inherit-parent never judges and the judge must be a different family than the parent, so a grok parent on Cursor and every Claude Code session (sonnet is the parent's family) get no cross-judge. Open decision for Rohosen: add an other-family model to that role.",
+  "effort": "medium",
   "tiers": {
-    "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet medium" },
-    "judge": { "cursor": "inherit-parent", "claude": "inherit-parent" }
+    "default": { "cursor": "inherit-parent", "claude": "opus" },
+    "strongest": { "cursor": "inherit-parent", "claude": "fable" },
+    "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet" },
+    "panel": { "cursor": ["inherit-parent", "inherit-parent"], "claude": ["opus", "fable", "sonnet", "haiku"] }
   },
-  "upstreamDefaults": { "grok-4.7-xhigh-fast": "worker", "claude-opus-5-5-xhigh": "judge" },
+  "upstreamDefaults": { "grok-4.7-xhigh-fast": "worker", "claude-opus-5-5-xhigh": "default" },
   "roles": {
-    "feature, refactoring": ["worker"],
-    "bug-fix": ["worker"],
-    "perf-issue": ["worker"],
-    "hillclimb": ["worker"],
-    "judgment and prose": ["judge"],
-    "hardest tasks": ["judge"],
-    "how explorer": ["worker"],
-    "how explainer": ["judge"],
-    "why investigators": ["worker"],
-    "why synthesizer": ["judge"],
-    "reflect tooling": ["worker"],
-    "reflect judgment, divergent, synthesizer": ["judge"],
-    "arena runners": ["judge", "worker"],
-    "arena cross-judge pool": ["judge", "worker"],
-    "swarm workers": ["worker"],
-    "architect runners": ["judge", "worker"],
-    "interrogate reviewers": ["judge", "worker"]
+    "feature, refactoring": "worker",
+    "bug-fix": "default",
+    "perf-issue": "default",
+    "hillclimb": "default",
+    "judgment and prose": "default",
+    "hardest tasks": "strongest",
+    "how explorer": "default",
+    "how explainer": "default",
+    "why investigators": "default",
+    "why synthesizer": "default",
+    "reflect tooling": "default",
+    "reflect judgment, divergent, synthesizer": "default",
+    "arena runners": "panel",
+    "arena cross-judge pool": "panel",
+    "swarm workers": "default",
+    "architect runners": "panel",
+    "interrogate reviewers": "panel",
+    "thermos reviewers": "default",
+    "no-comments reviewer": "default"
   }
 }

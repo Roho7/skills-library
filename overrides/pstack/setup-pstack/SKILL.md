@@ -1,6 +1,6 @@
 ---
 name: setup-pstack
-description: Configure which models pstack uses per role and at what reasoning budget. Edits models.json in the skills repo and rebuilds the per-tool model sheets from it. Use for /setup-pstack, "configure pstack models", "pstack budget", or changing pstack's model choices.
+description: Configure which models pstack uses per role. Edits models.json in the skills repo and rebuilds the per-tool model sheets from it. Use for /setup-pstack, "configure pstack models", "pstack budget", or changing pstack's model choices.
 ---
 
 # Setup pstack
@@ -10,7 +10,7 @@ pstack's model choices come only from `models.json` in the skills repo (`~/Docum
 ## Steps
 
 1. Read `models.json` and show the user each role with its model per tool.
-2. Ask what to change: the `budget` label, a tier's model for one tool, or which tiers a role uses. Prefer AskQuestion over free text.
-3. Edit `models.json`. `tiers` maps each tier to one model per tool. `roles` maps each role to its tiers, and a panel role (arena runners, architect runners, interrogate reviewers, arena cross-judge pool) lists one tier per seat. `inherit-parent` runs the role on the parent chat model and never cross-judges.
+2. Ask what to change: a tier's model for one tool, or which tier a role uses. Prefer AskQuestion over free text.
+3. Edit `models.json`. `tiers` maps each tier to a model per tool, and the `panel` tier to a list with one seat per entry. `roles` maps each role to one tier. `inherit-parent` runs the role on the parent chat model. Keep the tiers that judge or sit on a panel in the parent's own model family. Change `effort` only as the sheet's `# effort` line allows.
 4. Run `node scripts/build.mjs --check` in the repo and fix anything it reports.
 5. Copy each sheet in `generated/cursor/` and `generated/claude/` into that tool's rules folder (`~/.cursor/rules/`, `~/.claude/rules/`). Tell the user it applies to new sessions.

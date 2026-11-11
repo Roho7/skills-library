@@ -1,0 +1,40 @@
+{
+  "substitutions": [
+    {
+      "literal": "The judge is never from the parent's family, as Phase A step 3 defines families. Try only the entries from another family, in pool order. An `auto` or `inherit-parent` entry is the parent model, so it never judges. ",
+      "replacement": "The judge comes from the parent's own family, as Phase A step 3 defines families, and is a different model from the parent when the pool has one. Try the pool's entries in order and skip any outside the parent's family. An `auto` or `inherit-parent` entry is the parent model, so it judges only when no other entry qualifies. "
+    },
+    {
+      "regex": "With the default pool, a Claude parent gets `[^`]+`\\. A parent from any other family gets `[^`]+` first\\. ",
+      "replacement": ""
+    },
+    {
+      "literal": "If no entry from another family runs, try the default pool's entries from another family the same way. If none of those runs, skip the judge, pick the base alone in Phase D, and say so. If you do not know the parent's model, try the pool's real slugs in pool order",
+      "replacement": "If no entry runs, run the judge on the parent model and say so. If you do not know the parent's model, try the pool's entries in order"
+    },
+    {
+      "literal": "**Spawn one blinded judge** on a different model family per",
+      "replacement": "**Spawn one blinded judge** from the parent's own family per"
+    },
+    {
+      "literal": "isn't its author,** on a different model family.",
+      "replacement": "isn't its author,** on a different model from the author's own family."
+    },
+    {
+      "literal": "## Cross-model review of the trail",
+      "replacement": "## Second-model review of the trail"
+    },
+    {
+      "literal": "spawn a subagent on a different model family from the one that did the work.",
+      "replacement": "spawn a subagent on a different model from the same family as the one that did the work."
+    }
+  ],
+  "denylist": [
+    "different model family",
+    "another family",
+    "any other family",
+    "family other than",
+    "never from the parent's family",
+    "Cross-model"
+  ]
+}

@@ -2,8 +2,8 @@
 // Builds generated/ from the repo's single sources:
 //   models.json                         -> generated/cursor/pstack-models.mdc, generated/claude/pstack-models.md
 //   skills/<group>/* + overrides/<group>/* -> generated/<tool>/skills/<name>, upstream default slugs mapped to models.json tiers
-//   adapters/claude                     -> Claude-native text in generated/claude/skills
-// --check exits 1 when an upstream default slug or a denylisted Cursor term survives.
+//   adapters/common, adapters/claude    -> rewrites in both copies, then Claude-native text in generated/claude/skills
+// --check exits 1 when an upstream default slug or a denylisted term survives, or an adapters/common rule no longer matches.
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,22 +14,23 @@ const isCheck = process.argv.includes("--check");
 
 const models = JSON.parse(readFileSync(join(repo, "models.json"), "utf8"));
 const adapter = JSON.parse(readFileSync(join(repo, "adapters/claude/substitutions.json"), "utf8"));
+const common = JSON.parse(readFileSync(join(repo, "adapters/common/substitutions.json"), "utf8"));
+
+function tierModel(tier, runtime) {
+  const value = models.tiers[tier]?.[runtime];
+  if (!value) throw new Error(`models.json: tier "${tier}" has no ${runtime} model`);
+  return [value].flat().join(", ");
+}
 
 function buildSheetLines(runtime) {
-  return Object.entries(models.roles).map(([role, tiers]) => {
-    const values = tiers.map((tier) => {
-      const value = models.tiers[tier]?.[runtime];
-      if (!value) throw new Error(`models.json: tier "${tier}" has no ${runtime} model (role "${role}")`);
-      return value;
-    });
-    return `${role}: ${values.join(", ")}`;
-  });
+  return Object.entries(models.roles).map(([role, tier]) => `${role}: ${tierModel(tier, runtime)}`);
 }
 
 const sheetHeader = [
   "# pstack model configuration, generated from models.json in the skills repo. Edit models.json, run scripts/build.mjs and copy this sheet into place; edits here are overwritten.",
   "# `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit the subagent `model`).",
-  `# budget: ${models.budget}`,
+  `# effort: ${models.effort} for every pstack subagent on every tool. It overrides any skill instruction or budget that raises or lowers effort. Change it only when Rohosen asks, directly or through his conductor bot, or sets it himself.`,
+  "# Judges and panels use only the parent's own model family. The arena cross-judge is a different model from the parent when the pool has one.",
 ];
 
 function writeSheets() {
@@ -44,17 +45,18 @@ function writeSheets() {
 function mapUpstreamDefaults(text, runtime) {
   let mapped = text;
   for (const [slug, tier] of Object.entries(models.upstreamDefaults)) {
-    mapped = mapped.split(slug).join(models.tiers[tier][runtime]);
+    mapped = mapped.split(slug).join(tierModel(tier, runtime));
   }
   return mapped;
 }
 
-function translate(text) {
+function translate(text, rules, hits) {
   let translated = text;
-  for (const rule of adapter.substitutions) {
-    translated = rule.literal !== undefined
-      ? translated.split(rule.literal).join(rule.replacement)
-      : translated.replace(new RegExp(rule.regex, "g"), rule.replacement);
+  for (const rule of rules) {
+    const pattern = rule.literal !== undefined ? rule.literal : new RegExp(rule.regex, "g");
+    const next = translated.replaceAll(pattern, rule.replacement);
+    if (next !== translated) hits?.add(rule);
+    translated = next;
   }
   return translated;
 }
@@ -70,8 +72,9 @@ function buildSkills(runtime) {
   const target = join(out, runtime, "skills");
   rmSync(target, { recursive: true, force: true });
   mkdirSync(target, { recursive: true });
-  const denylist = [...Object.keys(models.upstreamDefaults), ...(runtime === "claude" ? adapter.denylist : [])];
+  const denylist = [...Object.keys(models.upstreamDefaults), ...common.denylist, ...(runtime === "claude" ? adapter.denylist : [])];
   const leftovers = [];
+  const hits = new Set();
   for (const group of adapter.groups) {
     const groupDir = join(repo, "skills", group);
     if (!existsSync(groupDir)) continue;
@@ -83,8 +86,8 @@ function buildSkills(runtime) {
       const override = join(repo, "overrides", group, name);
       if (existsSync(override)) cpSync(override, dest, { recursive: true });
       for (const file of listFiles(dest).filter((f) => f.endsWith(".md"))) {
-        let text = mapUpstreamDefaults(readFileSync(file, "utf8"), runtime);
-        if (runtime === "claude") text = translate(text);
+        let text = mapUpstreamDefaults(translate(readFileSync(file, "utf8"), common.substitutions, hits), runtime);
+        if (runtime === "claude") text = translate(text, adapter.substitutions);
         writeFileSync(file, text);
         for (const term of denylist) {
           if (text.includes(term)) leftovers.push(`${relative(out, file)}: ${term}`);
@@ -92,13 +95,15 @@ function buildSkills(runtime) {
       }
     }
   }
+  for (const rule of common.substitutions) {
+    if (!hits.has(rule)) leftovers.push(`${runtime}: adapters/common rule no longer matches: ${rule.literal ?? rule.regex}`);
+  }
   return leftovers;
 }
 
 writeSheets();
 const leftovers = ["cursor", "claude"].flatMap(buildSkills);
 console.log(`built generated/: model sheets and ${readdirSync(join(out, "claude/skills")).length} pstack skills for cursor + claude`);
-if (models.TODO) console.log(`TODO in models.json: ${models.TODO}`);
 if (leftovers.length) {
   console.log(`untranslated upstream terms (${leftovers.length}):\n  ${leftovers.join("\n  ")}`);
   if (isCheck) process.exit(1);
