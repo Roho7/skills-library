@@ -159,6 +159,15 @@
   },
   {
     "kind": "skill",
+    "name": "pr",
+    "group": "mattpocock",
+    "description": "Use when writing a PR body.",
+    "modelInvocable": true,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/pr"
+  },
+  {
+    "kind": "skill",
     "name": "teach",
     "group": "mattpocock",
     "description": "Teach the user a new skill or concept, as lessons in their Learn library.",

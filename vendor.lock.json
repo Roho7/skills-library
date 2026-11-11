@@ -977,6 +977,16 @@
       "installedAt": "2026-11-10T09:13:12Z",
       "updatedAt": "2026-11-10T09:13:13Z",
       "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    },
+    "pr": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/pr/SKILL.md",
+      "installedAt": "2026-11-11T19:48:26Z",
+      "updatedAt": "2026-11-11T19:48:26Z",
+      "group": "mattpocock",
+      "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
     }
   },
   "dismissed": {
