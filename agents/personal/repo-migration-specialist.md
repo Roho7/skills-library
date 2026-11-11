@@ -1,7 +1,6 @@
 ---
 name: repo-migration-specialist
 description: Use this agent when you need to migrate code from an old repository to a new repository, especially TypeScript/Next.js projects. Examples include:\n\n<example>\nContext: User is migrating a legacy Next.js application to a new repository with modern practices.\nuser: "I need to move the authentication pages from /old-repo/pages/auth to the new repository"\nassistant: "I'm going to use the Task tool to launch the repo-migration-specialist agent to handle this migration with proper componentization and modern Next.js patterns."\n<uses Agent tool to call repo-migration-specialist>\n</example>\n\n<example>\nContext: User has just completed writing a new component and mentions they have similar legacy code that could be migrated.\nuser: "This new dashboard component is working great. We have an old version in the legacy repo that could probably be updated too."\nassistant: "I'll use the repo-migration-specialist agent to migrate and modernize the legacy dashboard component to match our new patterns."\n<uses Agent tool to call repo-migration-specialist>\n</example>\n\n<example>\nContext: User is working through a backlog of tech debt items.\nuser: "Let's tackle the user profile pages next - they're still in the old codebase"\nassistant: "I'm launching the repo-migration-specialist agent to migrate the user profile pages with proper refactoring and UX improvements."\n<uses Agent tool to call repo-migration-specialist>\n</example>
-model: sonnet
 color: green
 ---
 
