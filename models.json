@@ -1,9 +1,11 @@
 {
   "budget": "small (medium)",
+  "TODO": "arena cross-judge pool: inherit-parent never judges and the judge must be a different family than the parent, so a grok parent on Cursor and every Claude Code session (sonnet is the parent's family) get no cross-judge. Open decision for Rohosen: add an other-family model to that role.",
   "tiers": {
     "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet medium" },
     "judge": { "cursor": "inherit-parent", "claude": "inherit-parent" }
   },
+  "upstreamDefaults": { "grok-4.7-xhigh-fast": "worker", "claude-opus-5-5-xhigh": "judge" },
   "roles": {
     "feature, refactoring": ["worker"],
     "bug-fix": ["worker"],

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Builds generated/ from the repo's single sources:
 //   models.json                         -> generated/cursor/pstack-models.mdc, generated/claude/pstack-models.md
-//   skills/<group>/* + adapters/claude  -> generated/claude/skills/<name> (Claude-native copy of Cursor-native groups)
-// --check exits 1 when a denylisted Cursor term survives translation.
+//   skills/<group>/* + overrides/<group>/* -> generated/<tool>/skills/<name>, upstream default slugs mapped to models.json tiers
+//   adapters/claude                     -> Claude-native text in generated/claude/skills
+// --check exits 1 when an upstream default slug or a denylisted Cursor term survives.
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -40,6 +41,14 @@ function writeSheets() {
   cpSync(join(repo, "adapters/claude/pstack-runtime.md"), join(out, "claude/pstack-runtime.md"));
 }
 
+function mapUpstreamDefaults(text, runtime) {
+  let mapped = text;
+  for (const [slug, tier] of Object.entries(models.upstreamDefaults)) {
+    mapped = mapped.split(slug).join(models.tiers[tier][runtime]);
+  }
+  return mapped;
+}
+
 function translate(text) {
   let translated = text;
   for (const rule of adapter.substitutions) {
@@ -57,10 +66,11 @@ function listFiles(dir) {
   });
 }
 
-function buildClaudeSkills() {
-  const target = join(out, "claude/skills");
+function buildSkills(runtime) {
+  const target = join(out, runtime, "skills");
   rmSync(target, { recursive: true, force: true });
   mkdirSync(target, { recursive: true });
+  const denylist = [...Object.keys(models.upstreamDefaults), ...(runtime === "claude" ? adapter.denylist : [])];
   const leftovers = [];
   for (const group of adapter.groups) {
     const groupDir = join(repo, "skills", group);
@@ -70,11 +80,14 @@ function buildClaudeSkills() {
       if (!statSync(source).isDirectory()) continue;
       const dest = join(target, name);
       cpSync(source, dest, { recursive: true });
+      const override = join(repo, "overrides", group, name);
+      if (existsSync(override)) cpSync(override, dest, { recursive: true });
       for (const file of listFiles(dest).filter((f) => f.endsWith(".md"))) {
-        const translated = translate(readFileSync(file, "utf8"));
-        writeFileSync(file, translated);
-        for (const term of adapter.denylist) {
-          if (translated.includes(term)) leftovers.push(`${relative(out, file)}: ${term}`);
+        let text = mapUpstreamDefaults(readFileSync(file, "utf8"), runtime);
+        if (runtime === "claude") text = translate(text);
+        writeFileSync(file, text);
+        for (const term of denylist) {
+          if (text.includes(term)) leftovers.push(`${relative(out, file)}: ${term}`);
         }
       }
     }
@@ -83,9 +96,10 @@ function buildClaudeSkills() {
 }
 
 writeSheets();
-const leftovers = buildClaudeSkills();
-console.log(`built generated/: model sheets for cursor + claude, ${readdirSync(join(out, "claude/skills")).length} Claude-translated skills`);
+const leftovers = ["cursor", "claude"].flatMap(buildSkills);
+console.log(`built generated/: model sheets and ${readdirSync(join(out, "claude/skills")).length} pstack skills for cursor + claude`);
+if (models.TODO) console.log(`TODO in models.json: ${models.TODO}`);
 if (leftovers.length) {
-  console.log(`untranslated Cursor terms (${leftovers.length}):\n  ${leftovers.join("\n  ")}`);
+  console.log(`untranslated upstream terms (${leftovers.length}):\n  ${leftovers.join("\n  ")}`);
   if (isCheck) process.exit(1);
 }
