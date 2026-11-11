@@ -1,32 +1,86 @@
 {
   "substitutions": [
     {
+      "regex": "Families go by prefix: `claude-\\*`, and `grok-\\*` with `cursor-grok-\\*` and `composer-\\*`\\. A refused `composer-\\*` entry runs on `[^`]+`\\. ",
+      "replacement": {
+        "cursor": ""
+      }
+    },
+    {
       "literal": "The judge is never from the parent's family, as Phase A step 3 defines families. Try only the entries from another family, in pool order. An `auto` or `inherit-parent` entry is the parent model, so it never judges. ",
-      "replacement": "The judge comes from the parent's own family, as Phase A step 3 defines families, and is a different model from the parent when the pool has one. Try the pool's entries in order and skip any outside the parent's family. An `auto` or `inherit-parent` entry is the parent model, so it judges only when no other entry qualifies. "
+      "replacement": {
+        "claude": "The judge comes from the parent's own family, as Phase A step 3 defines families, and is a different model from the parent when the pool has one. Try the pool's entries in order and skip any outside the parent's family. An `auto` or `inherit-parent` entry is the parent model, so it judges only when no other entry qualifies. ",
+        "cursor": "The judge runs on the pool's model, the same model as the runners, whatever the parent's model is. Do not look for a model from a second family. Try the pool's entries in order. An `auto` or `inherit-parent` entry is the parent model, so skip it. "
+      }
     },
     {
       "regex": "With the default pool, a Claude parent gets `[^`]+`\\. A parent from any other family gets `[^`]+` first\\. ",
       "replacement": ""
     },
     {
-      "literal": "If no entry from another family runs, try the default pool's entries from another family the same way. If none of those runs, skip the judge, pick the base alone in Phase D, and say so. If you do not know the parent's model, try the pool's real slugs in pool order",
-      "replacement": "If no entry runs, run the judge on the parent model and say so. If you do not know the parent's model, try the pool's entries in order"
+      "literal": "If no entry from another family runs, try the default pool's entries from another family the same way. If none of those runs, skip the judge, pick the base alone in Phase D, and say so. If you do not know the parent's model, try the pool's real slugs in pool order and say that the family check did not run.",
+      "replacement": {
+        "claude": "If no entry runs, run the judge on the parent model and say so. If you do not know the parent's model, try the pool's entries in order and say that the family check did not run.",
+        "cursor": "If no entry runs, skip the judge, pick the base alone in Phase D, and say so."
+      }
     },
     {
       "literal": "**Spawn one blinded judge** on a different model family per",
-      "replacement": "**Spawn one blinded judge** from the parent's own family per"
+      "replacement": {
+        "claude": "**Spawn one blinded judge** from the parent's own family per",
+        "cursor": "**Spawn one blinded judge** on the same model as the candidates per"
+      }
     },
     {
       "literal": "isn't its author,** on a different model family.",
-      "replacement": "isn't its author,** on a different model from the author's own family."
+      "replacement": {
+        "claude": "isn't its author,** on a different model from the author's own family.",
+        "cursor": "isn't its author,** on the same model as its author, in a fresh context."
+      }
     },
     {
       "literal": "## Cross-model review of the trail",
-      "replacement": "## Second-model review of the trail"
+      "replacement": {
+        "claude": "## Second-model review of the trail",
+        "cursor": "## Fresh-context review of the trail"
+      }
     },
     {
       "literal": "spawn a subagent on a different model family from the one that did the work.",
-      "replacement": "spawn a subagent on a different model from the same family as the one that did the work."
+      "replacement": {
+        "claude": "spawn a subagent on a different model from the same family as the one that did the work.",
+        "cursor": "spawn a fresh subagent on the `judgment and prose` model from the pstack sheet."
+      }
+    },
+    {
+      "literal": "Keep the tiers that judge or sit on a panel in the parent's own model family.",
+      "replacement": {
+        "cursor": "On Cursor every tier is the same Grok model, and judges run on the same model as the runners."
+      }
+    },
+    {
+      "literal": "You are one of the parallel runners, each on a different model.",
+      "replacement": {
+        "cursor": "You are one of the parallel runners, each in its own context."
+      }
+    },
+    {
+      "literal": "**Spawn N parallel candidates** on different models per",
+      "replacement": {
+        "cursor": "**Spawn N parallel candidates** on the `arena runners` models per"
+      }
+    },
+    {
+      "literal": "Ask more than one model the same question and merge the answers. Different models catch different real bugs.",
+      "replacement": {
+        "cursor": "Ask more than one runner the same question and merge the answers. Separate runs catch different real bugs."
+      }
+    },
+    {
+      "literal": "A second opinion is the same prompt against a different model.",
+      "replacement": {
+        "cursor": "A second opinion is the same prompt in a fresh context."
+      }
     }
   ],
   "denylist": [

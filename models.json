@@ -1,10 +1,10 @@
 {
   "effort": "medium",
   "tiers": {
-    "default": { "cursor": "inherit-parent", "claude": "opus" },
-    "strongest": { "cursor": "inherit-parent", "claude": "fable" },
+    "default": { "cursor": "grok-4.7-medium", "claude": "opus" },
+    "strongest": { "cursor": "grok-4.7-medium", "claude": "fable" },
     "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet" },
-    "panel": { "cursor": ["inherit-parent", "inherit-parent"], "claude": ["opus", "fable", "sonnet", "haiku"] }
+    "panel": { "cursor": ["grok-4.7-medium", "grok-4.7-medium"], "claude": ["opus", "fable", "sonnet", "haiku"] }
   },
   "upstreamDefaults": { "grok-4.7-xhigh-fast": "worker", "claude-opus-5-5-xhigh": "default" },
   "roles": {
