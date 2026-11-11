@@ -9,4 +9,4 @@ Whenever a pstack workflow produces a code diff (poteto-mode and its playbooks, 
 
 Skip it only when the diff adds or changes no comments, or when the user says to skip it for this task.
 
-pstack model choices for every tool come from `~/Documents/MAIN/CODE/skills/models.json` (roles → tiers → each tool's model). For `/setup-pstack` or any model change, edit that file and run `scripts/link.sh`; never write the `pstack-models` sheets directly, because they are generated.
+pstack model choices for every tool come from `~/Documents/MAIN/CODE/skills/models.json` (roles → tiers → each tool's model). For `/setup-pstack` or any model change, edit that file, run `node scripts/build.mjs`, and copy the generated sheets into `~/.cursor/rules` and `~/.claude/rules`; never write the `pstack-models` sheets directly, because they are generated.

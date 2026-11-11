@@ -26,7 +26,7 @@ function buildSheetLines(runtime) {
 }
 
 const sheetHeader = [
-  "# pstack model configuration, generated from models.json in the skills repo. Edit models.json and run scripts/link.sh; edits here are overwritten.",
+  "# pstack model configuration, generated from models.json in the skills repo. Edit models.json, run scripts/build.mjs and copy this sheet into place; edits here are overwritten.",
   "# `inherit-parent` or `auto` as a value: the role runs on the parent chat model (omit the subagent `model`).",
   `# budget: ${models.budget}`,
 ];
