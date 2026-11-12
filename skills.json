@@ -168,6 +168,15 @@
   },
   {
     "kind": "skill",
+    "name": "retro",
+    "group": "mattpocock",
+    "description": "Conduct a retrospective on a coding session.",
+    "modelInvocable": false,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/retro"
+  },
+  {
+    "kind": "skill",
     "name": "teach",
     "group": "mattpocock",
     "description": "Teach the user a new skill or concept, as lessons in their Learn library.",
