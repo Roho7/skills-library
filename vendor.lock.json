@@ -987,6 +987,16 @@
       "updatedAt": "2026-11-11T19:48:26Z",
       "group": "mattpocock",
       "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    },
+    "deslop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "cursor-team-kit/skills/deslop/SKILL.md",
+      "group": "cursor-team-kit",
+      "installedAt": "2026-11-12T07:50:20Z",
+      "updatedAt": "2026-11-12T07:50:22Z",
+      "commit": "a5539b15a3d56e04992565aafee2b37051329ce3"
     }
   },
   "dismissed": {
