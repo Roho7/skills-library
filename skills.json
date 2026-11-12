@@ -222,15 +222,6 @@
   },
   {
     "kind": "skill",
-    "name": "create-pr",
-    "group": "personal",
-    "description": "Create a GitHub pull request for the current branch using the gh CLI, following the mandatory PR template (What does this PR do? / Type of change / How should this be manually tested? / etc.) and title guidelines. Use whenever the user wants to open, raise, create, or submit a PR or pull request, or asks to \"PR this branch\", and when writing or rewriting a PR title or description.",
-    "modelInvocable": true,
-    "source": "local",
-    "path": "skills/personal/create-pr"
-  },
-  {
-    "kind": "skill",
     "name": "obsidian-vault",
     "group": "personal",
     "description": "Search, create, and manage notes in the Obsidian vault with wikilinks and index notes. Use when user wants to find, create, or organize notes in Obsidian.",
