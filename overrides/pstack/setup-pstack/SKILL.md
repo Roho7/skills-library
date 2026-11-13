@@ -5,7 +5,7 @@ description: Configure which models pstack uses per role. Edits models.json in t
 
 # Setup pstack
 
-pstack's model choices come only from `models.json` in the skills repo (`~/Documents/MAIN/CODE/skills`). Never write a model sheet by hand or fill one with skill defaults. The build writes both sheets from `models.json`.
+pstack's model choices come only from `models.json` in the skills repo (`~/Documents/MAIN/CODE/side-projects/skills`). Never write a model sheet by hand or fill one with skill defaults. The build writes both sheets from `models.json`.
 
 ## Steps
 

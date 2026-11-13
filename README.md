@@ -54,9 +54,9 @@ Groups are for humans only. Tools see flat lists, so names must be unique across
 ## Restore on a new machine
 
 ```bash
-git clone https://github.com/Roho7/skills ~/Documents/MAIN/CODE/skills
+git clone https://github.com/Roho7/skills ~/Documents/MAIN/CODE/side-projects/skills
 mkdir -p ~/.agents/skills ~/.claude/skills ~/.cursor
-cp -R ~/Documents/MAIN/CODE/skills/skills/*/* ~/.agents/skills/
+cp -R ~/Documents/MAIN/CODE/side-projects/skills/skills/*/* ~/.agents/skills/
 ln -s ~/.agents/skills ~/.cursor/skills
 for s in ~/.agents/skills/*; do ln -s "$s" ~/.claude/skills/; done
 ```
