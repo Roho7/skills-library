@@ -22,7 +22,6 @@ function git(args) {
 
 const expandHome = (p) => (p === '~' || p.startsWith('~/') ? path.join(os.homedir(), p.slice(1)) : p);
 
-/** Repo = { root, stateDir, mainName, inGit }. stateDir lives in the worktree's git dir, so it is per worktree and never committed. */
 function resolveRepo() {
   const root = git(['rev-parse', '--show-toplevel']);
   if (!root) {
@@ -42,7 +41,6 @@ export const STATE_DIR = repo.stateDir;
 
 export const CONFIG_FILE = path.join(repo.root, '.shot.json');
 
-/** Config = defaults <- <root>/.shot.json <- env. */
 function loadConfig() {
   const defaults = {
     baseUrl: 'http://localhost:3000',
@@ -73,7 +71,6 @@ function loadConfig() {
 
 export const config = loadConfig();
 
-/** Chrome profile shared by every checkout of one repo, so a login done once stays valid for all worktrees. */
 export const CHROME_PROFILE_DIR = config.profile;
 
 export function requireAuth() {
@@ -120,7 +117,6 @@ export function pidAlive(pid) {
   }
 }
 
-/** Runs a command to completion, capturing output. Never throws on non-zero exit. */
 export function run(cmd, args, { cwd, env, timeoutMs = 10 * 60_000 } = {}) {
   return new Promise((resolve) => {
     const started = Date.now();
@@ -138,7 +134,6 @@ export function run(cmd, args, { cwd, env, timeoutMs = 10 * 60_000 } = {}) {
   });
 }
 
-/** `booleans` lists flags that never take a value, so `--full out.png` keeps `out.png` positional. */
 export function parseFlags(argv, booleans = []) {
   const flags = {};
   const positional = [];

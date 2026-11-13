@@ -63,7 +63,6 @@ async function frameSize(file) {
   return { width, height };
 }
 
-/** Frames change size with the viewport; normalising them first keeps the palette filters from seeing a size change, which left stale pixels in the GIF. */
 async function encodeGif(dir, listFile, width, height) {
   const normalized = path.join(dir, 'frames.mkv');
   const gif = path.join(dir, 'demo.gif');
@@ -74,7 +73,6 @@ async function encodeGif(dir, listFile, width, height) {
   return gif;
 }
 
-/** Photo-heavy pages make big GIFs, so the width shrinks until the file fits a PR upload. */
 async function buildGif(dir, frames, { width, height }) {
   const list = frames.map((f, i) => {
     const gap = i + 1 < frames.length ? Math.min(frames[i + 1].t - f.t, MAX_GAP_S) : LAST_HOLD_S;

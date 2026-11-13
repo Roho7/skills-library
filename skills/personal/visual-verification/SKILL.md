@@ -1,6 +1,6 @@
 ---
 name: visual-verification
-description: Use when taking screenshots, recording a GIF demo, checking a UI in a real browser, or adding images to a PR. Provides the `shot` CLI.
+description: Use after changing a UI to check it in a real browser, and whenever taking screenshots, recording a GIF demo, or adding images to a PR. Provides the `shot` CLI.
 ---
 
 `shot` drives a persistent Chrome (one tab per git worktree), takes screenshots shrunk to the smallest size their text stays legible at, records GIF demos, and publishes images for PRs. Every command prints one JSON object (with `next`) and exits non-zero on failure. `shot <command> --help` has the details.

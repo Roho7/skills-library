@@ -25,7 +25,6 @@ export async function playwright() {
   }
 }
 
-/** The live Chrome that holds the profile's SingletonLock, with the DevTools port it was started on. */
 export function profileHolder() {
   let target;
   try {
@@ -99,7 +98,6 @@ export async function tabId(p) {
   }
 }
 
-/** This checkout's own tab, so checkouts sharing one Chrome never navigate each other's pages. */
 export async function page() {
   if (!(await isPortOpen(config.cdpPort))) await start();
   const { chromium } = await playwright();
@@ -173,9 +171,7 @@ async function snapshot(_positional, flags) {
   return { url: p.url(), title: await p.title(), selector, truncated: tree.length > max, snapshot: tree.slice(0, max) };
 }
 
-/** Smallest rendered text height, in px, that a vision model still reads; checked by eye on the storefront's 9px badges. */
 export const LEGIBLE_TEXT_PX = 6;
-/** Below half size, layout and imagery get too small to judge even when text survives. */
 export const MIN_SCALE = 0.5;
 
 export async function smallestTextPx(p, fullPage) {
@@ -196,12 +192,10 @@ export async function smallestTextPx(p, fullPage) {
   }, fullPage);
 }
 
-/** Render scale at which the smallest text stays legible; 1 when the page has no text. */
 export function legibleScale(smallest) {
   return smallest ? Math.min(1, Math.max(MIN_SCALE, LEGIBLE_TEXT_PX / smallest)) : 1;
 }
 
-/** Chrome renders the capture at `scale` itself, so small text stays sharper than a resized PNG. */
 async function capture(p, { fullPage, scale }) {
   const clip = await p.evaluate((fullPage) => {
     const doc = document.documentElement;
@@ -337,7 +331,6 @@ async function otherTabs(ownTab) {
   return targets.filter((t) => t.type === 'page' && t.id !== ownTab && t.url !== 'about:blank');
 }
 
-/** Closes this checkout's tab, and quits Chrome only when this checkout started it and no other checkout still has a tab open. */
 async function stop() {
   const entry = readJson(STATE(), {});
   if (!(await isPortOpen(config.cdpPort))) {

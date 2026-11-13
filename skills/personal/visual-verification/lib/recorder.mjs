@@ -27,7 +27,6 @@ await session.send('Page.enable');
 await session.send('Page.startScreencast', { format: 'jpeg', quality: 90, maxWidth: Math.round(viewport.width * scale), maxHeight: Math.round(viewport.height * scale) });
 fs.writeFileSync(path.join(dir, 'ready'), '');
 
-// Chrome drops an shot call's viewport override when that call exits, so the recorder holds the latest one.
 async function holdViewport() {
   const want = VIEWPORTS[readJson(STATE(), {}).viewport];
   if (!want || (await target.evaluate(() => innerWidth).catch(() => want.width)) === want.width) return;
