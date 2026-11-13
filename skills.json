@@ -177,6 +177,15 @@
   },
   {
     "kind": "skill",
+    "name": "writing-for-agents",
+    "group": "mattpocock",
+    "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
+    "modelInvocable": true,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/writing-for-agents"
+  },
+  {
+    "kind": "skill",
     "name": "writing-great-skills",
     "group": "mattpocock",
     "description": "Reference for writing and editing skills well — the vocabulary and principles that make a skill predictable.",

@@ -963,6 +963,16 @@
       "updatedAt": "2026-11-11T19:48:26Z",
       "group": "mattpocock",
       "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d"
+    },
+    "writing-for-agents": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/writing-for-agents/SKILL.md",
+      "installedAt": "2026-11-12T14:52:30Z",
+      "updatedAt": "2026-11-12T14:52:31Z",
+      "group": "mattpocock",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
     }
   },
   "dismissed": {
