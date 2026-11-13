@@ -161,7 +161,7 @@ Concrete evidence that the change works. Show a before and after.
 
 Screenshots are S-tier - when the environment is set up for it and the change is visual.
 
-A UI flow change, a new feature walkthrough, or an explicit ask also gets a GIF demo (never an mp4); check a few of its frames before you attach it.
+Screenshots and GIF demos come from the `visual-verification` skill (`shot screenshot`, `shot record start/stop`, `shot pr-image`); a UI flow change, a new feature walkthrough, or an explicit ask also gets a GIF demo (never an mp4), and you read its `keyframes.png` before attaching it.
 
 Execution-based evidence is A-tier. Test results, console output. Show the exact test that now fails and passes, using pseudocode.
 
