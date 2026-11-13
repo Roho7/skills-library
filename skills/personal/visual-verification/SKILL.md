@@ -25,7 +25,7 @@ description: Use when taking screenshots, recording a GIF demo, checking a UI in
 
 1. `shot open <path>`, then `shot screenshot <file>.png`; Read it.
 2. For a UI flow: `shot record start`, drive with `shot open` / `shot click`, `shot record stop`. Read `keyframes.png` and confirm the flow shows before attaching.
-3. `shot pr-image <file>` and paste the markdown into the PR body, or add `--pr <number>`. Mask customer PII first: the branch keeps history.
+3. `shot pr-image <file>` and paste the markdown into the PR body, or add `--pr <number>`.
 
 ## `.shot.json` (repo root, optional)
 
