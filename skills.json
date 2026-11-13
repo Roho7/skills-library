@@ -294,6 +294,15 @@
   },
   {
     "kind": "skill",
+    "name": "visual-verification",
+    "group": "personal",
+    "description": "Use when taking screenshots, recording a GIF demo, checking a UI in a real browser, or adding images to a PR. Provides the `shot` CLI.",
+    "modelInvocable": true,
+    "source": "local",
+    "path": "skills/personal/visual-verification"
+  },
+  {
+    "kind": "skill",
     "name": "architect",
     "group": "pstack",
     "description": "Sketch types, signatures, and module structure before code, then stay in the loop while implementation fills in. Use for /architect, 'architect this', 'design this', or non-trivial work where jumping to code would lock in the wrong shape.",
