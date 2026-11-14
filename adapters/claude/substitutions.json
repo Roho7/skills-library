@@ -1,15 +1,15 @@
 {
   "groups": [
-    "pstack"
+    "rohostack"
   ],
   "substitutions": [
     {
-      "literal": "~/.cursor/rules/pstack-models.mdc",
-      "replacement": "~/.claude/rules/pstack-models.md"
+      "literal": "~/.cursor/rules/rohostack-models.mdc",
+      "replacement": "~/.claude/rules/rohostack-models.md"
     },
     {
-      "literal": "pstack-models.mdc",
-      "replacement": "pstack-models.md"
+      "literal": "rohostack-models.mdc",
+      "replacement": "rohostack-models.md"
     },
     {
       "literal": ".cursor/skills/",
@@ -72,7 +72,7 @@
     "`Task`",
     "Task tool",
     "AskQuestion",
-    "pstack-models.mdc",
+    "rohostack-models.mdc",
     "generalPurpose",
     "grok-4",
     "claude-opus-5"

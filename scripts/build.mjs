@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Builds generated/ from the repo's single sources:
-//   models.json                         -> generated/cursor/pstack-models.mdc, generated/claude/pstack-models.md
+//   models.json                         -> generated/cursor/rohostack-models.mdc, generated/claude/rohostack-models.md
 //   skills/<group>/* + overrides/<group>/* -> generated/<tool>/skills/<name>, upstream default slugs mapped to models.json tiers
 //   adapters/common, adapters/claude    -> rewrites in both copies, then Claude-native text in generated/claude/skills
 // --check exits 1 when an upstream default slug or a denylisted term survives, or an adapters/common rule no longer matches.
@@ -39,9 +39,9 @@ const runtimeRules = {
 function buildSheet(runtime) {
   const { parent, judges } = runtimeRules[runtime];
   return [
-    "# pstack model configuration, generated from models.json in the skills repo. Edit models.json, run scripts/build.mjs and copy this sheet into place; edits here are overwritten.",
+    "# rohostack model configuration, generated from models.json in the skills repo. Edit models.json, run scripts/build.mjs and copy this sheet into place; edits here are overwritten.",
     ...(parent ? [parent] : []),
-    `# effort: ${models.effort} for every pstack subagent on every tool. It overrides any skill instruction or budget that raises or lowers effort. Change it only when Rohosen asks, directly or through his conductor bot, or sets it himself.`,
+    `# effort: ${models.effort} for every rohostack subagent on every tool. It overrides any skill instruction or budget that raises or lowers effort. Change it only when Rohosen asks, directly or through his conductor bot, or sets it himself.`,
     judges,
     ...buildSheetLines(runtime),
     "",
@@ -51,10 +51,10 @@ function buildSheet(runtime) {
 function writeSheets() {
   mkdirSync(join(out, "cursor"), { recursive: true });
   mkdirSync(join(out, "claude"), { recursive: true });
-  const cursorFrontmatter = ["---", "description: pstack per-role model choices (overrides skill defaults)", "alwaysApply: true", "---"];
-  writeFileSync(join(out, "cursor/pstack-models.mdc"), [...cursorFrontmatter, ...buildSheet("cursor")].join("\n"));
-  writeFileSync(join(out, "claude/pstack-models.md"), buildSheet("claude").join("\n"));
-  cpSync(join(repo, "adapters/claude/pstack-runtime.md"), join(out, "claude/pstack-runtime.md"));
+  const cursorFrontmatter = ["---", "description: rohostack per-role model choices (overrides skill defaults)", "alwaysApply: true", "---"];
+  writeFileSync(join(out, "cursor/rohostack-models.mdc"), [...cursorFrontmatter, ...buildSheet("cursor")].join("\n"));
+  writeFileSync(join(out, "claude/rohostack-models.md"), buildSheet("claude").join("\n"));
+  cpSync(join(repo, "adapters/claude/rohostack-runtime.md"), join(out, "claude/rohostack-runtime.md"));
 }
 
 function mapUpstreamDefaults(text, runtime) {
@@ -121,7 +121,7 @@ function buildSkills(runtime) {
 
 writeSheets();
 const leftovers = ["cursor", "claude"].flatMap(buildSkills);
-console.log(`built generated/: model sheets and ${readdirSync(join(out, "claude/skills")).length} pstack skills for cursor + claude`);
+console.log(`built generated/: model sheets and ${readdirSync(join(out, "claude/skills")).length} rohostack skills for cursor + claude`);
 if (leftovers.length) {
   console.log(`untranslated upstream terms (${leftovers.length}):\n  ${leftovers.join("\n  ")}`);
   if (isCheck) process.exit(1);
