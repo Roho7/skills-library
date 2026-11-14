@@ -1,5 +1,5 @@
 ---
-name: record_demo
+name: record-demo
 description: Record a short screen-recording video of a feature you just implemented, by driving the running app in a real browser. Fully self-hosted (Playwright + Chromium + ffmpeg), no external service. Use this skill when asked to "record a video / demo of what you implemented".
 ---
 
@@ -14,7 +14,7 @@ The tooling lives next to this file:
 - `postprocess.sh` — speeds up + converts the recording to a web-friendly mp4
 - `package.json` — pins Playwright
 
-Resolve the skill directory once and reuse it (it is wherever this `SKILL.md` lives, e.g. `.claude/skills/record_demo`). 
+Resolve the skill directory once and reuse it (it is wherever this `SKILL.md` lives, e.g. `.claude/skills/record-demo`). 
 Below it is referred to as `$SKILL`.
 
 ## 1. Decide what to demo
