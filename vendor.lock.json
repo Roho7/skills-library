@@ -973,6 +973,26 @@
       "updatedAt": "2026-11-12T14:52:31Z",
       "group": "mattpocock",
       "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    },
+    "deslop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "cursor-team-kit/skills/deslop/SKILL.md",
+      "group": "cursor-team-kit",
+      "installedAt": "2026-11-12T07:50:20Z",
+      "updatedAt": "2026-11-12T07:50:22Z",
+      "commit": "a5539b15a3d56e04992565aafee2b37051329ce3"
+    },
+    "retro": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/retro/SKILL.md",
+      "installedAt": "2026-11-12T13:26:07Z",
+      "updatedAt": "2026-11-12T13:26:07Z",
+      "group": "mattpocock",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
     }
   },
   "dismissed": {
