@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 # Usage:
 #   install.sh vendor <name> <owner/repo | git url> <path/to/SKILL.md> <group> [commit]
-#   install.sh link <name>
-# Run from a checkout of the skills repo; falls back to $SKILLS_REPO or ~/Documents/MAIN/CODE/skills.
+# Run from a checkout of the skills library; falls back to $SKILLS_REPO or ~/Documents/MAIN/CODE/skills/library.
 set -euo pipefail
 
 top="$(git rev-parse --show-toplevel 2>/dev/null || true)"
-if [ -n "$top" ] && [ -f "$top/vendor.lock.json" ]; then REPO="$top"; else REPO="${SKILLS_REPO:-$HOME/Documents/MAIN/CODE/skills}"; fi
+if [ -n "$top" ] && [ -f "$top/vendor.lock.json" ]; then REPO="$top"; else REPO="${SKILLS_REPO:-$HOME/Documents/MAIN/CODE/skills/library}"; fi
 LOCK="$REPO/vendor.lock.json"
-LIVE="$HOME/.agents/skills"
-CLAUDE="$HOME/.claude/skills"
 
 die() { echo "error: $*" >&2; exit 1; }
 repo_dirs() { find "$REPO/skills" -mindepth 2 -maxdepth 2 -type d -name "$1"; }
@@ -36,25 +33,7 @@ vendor)
   node "$REPO/scripts/index.mjs"
   echo "pinned $name @ $(jq -r --arg n "$name" '.skills[$n].commit' "$LOCK")"
   ;;
-link)
-  [ $# -eq 1 ] || die "usage: install.sh link <name>"
-  name="$1"
-  dirs="$(repo_dirs "$name")"
-  [ -n "$dirs" ] || die "$name not in $REPO/skills/<group>/"
-  [ "$(wc -l <<<"$dirs")" -eq 1 ] || die "$name in several groups: $dirs"
-  for t in "$LIVE/$name" "$CLAUDE/$name"; do
-    if [ -e "$t" ] || [ -L "$t" ]; then die "$t already exists; not overwriting"; fi
-  done
-
-  cp -R "$dirs" "$LIVE/$name"
-  ln -s "$LIVE/$name" "$CLAUDE/$name"
-
-  diff -r "$dirs" "$LIVE/$name" && echo "diff -r: identical"
-  cmp "$dirs/SKILL.md" "$LIVE/$name/SKILL.md" && echo "cmp: identical"
-  ls -l "$CLAUDE/$name"
-  awk 'NR==1 && /^---$/ {fm=1; print; next} fm {print} fm && /^---$/ {exit}' "$LIVE/$name/SKILL.md"
-  ;;
 *)
-  die "usage: install.sh vendor|link ..."
+  die "usage: install.sh vendor <name> <owner/repo | git url> <path/to/SKILL.md> <group> [commit]"
   ;;
 esac

@@ -5,7 +5,7 @@ description: Configure which models rohostack uses per role. Edits models.json i
 
 # Setup rohostack
 
-rohostack's model choices come only from `models.json` in the skills repo (`~/Documents/MAIN/CODE/skills`). Never write a model sheet by hand or fill one with skill defaults. The build writes both sheets from `models.json`.
+rohostack's model choices come only from `models.json` in the skills library (`~/Documents/MAIN/CODE/skills/library`). Never write a model sheet by hand or fill one with skill defaults. The build writes both sheets from `models.json`.
 
 ## Steps
 

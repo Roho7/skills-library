@@ -224,7 +224,7 @@
     "kind": "skill",
     "name": "install-skill",
     "group": "personal",
-    "description": "Install a skill globally on this Mac through the Roho7/skills backup repo. Use when the user asks to install, add, or vendor a skill, from a GitHub repo or one they wrote. Use instead of `npx skills add`.",
+    "description": "Install a skill globally on this Mac through the private Roho7/skills-library repo. Use when the user asks to install, add, or vendor a skill, from a GitHub repo or one they wrote. Use instead of `npx skills add`.",
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/install-skill"

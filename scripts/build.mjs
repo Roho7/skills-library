@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Builds generated/ from the repo's single sources:
 //   models.json                         -> generated/cursor/rohostack-models.mdc, generated/claude/rohostack-models.md
+//   rules/rohostack-defaults.md         -> generated/cursor/rohostack-defaults.mdc, generated/claude/rohostack-defaults.md (no frontmatter)
 //   skills/<group>/* + overrides/<group>/* -> generated/<tool>/skills/<name>, upstream default slugs mapped to models.json tiers
 //   adapters/common, adapters/claude    -> rewrites in both copies, then Claude-native text in generated/claude/skills
 // --check exits 1 when an upstream default slug or a denylisted term survives, or an adapters/common rule no longer matches.
@@ -55,6 +56,9 @@ function writeSheets() {
   writeFileSync(join(out, "cursor/rohostack-models.mdc"), [...cursorFrontmatter, ...buildSheet("cursor")].join("\n"));
   writeFileSync(join(out, "claude/rohostack-models.md"), buildSheet("claude").join("\n"));
   cpSync(join(repo, "adapters/claude/rohostack-runtime.md"), join(out, "claude/rohostack-runtime.md"));
+  const defaults = readFileSync(join(repo, "rules/rohostack-defaults.md"), "utf8");
+  writeFileSync(join(out, "cursor/rohostack-defaults.mdc"), defaults);
+  writeFileSync(join(out, "claude/rohostack-defaults.md"), defaults.replace(/^---\n[\s\S]*?\n---\n\n?/, ""));
 }
 
 function mapUpstreamDefaults(text, runtime) {
