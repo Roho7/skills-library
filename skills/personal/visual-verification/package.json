@@ -1,6 +1,8 @@
 {
   "name": "visual-verification",
   "private": true,
+  "license": "MIT",
+  "engines": { "node": ">=20" },
   "type": "module",
   "bin": { "shot": "./shot.mjs" },
   "dependencies": {

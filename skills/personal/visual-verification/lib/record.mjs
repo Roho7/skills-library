@@ -53,7 +53,7 @@ function readFrames(dir) {
 
 async function ffmpeg(args) {
   const res = await run('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', ...args]);
-  if (res.code !== 0) throw new OpError(`ffmpeg failed: ${res.stderr.trim().split('\n').pop()}`, 'Run `shot doctor`; ffmpeg must be on PATH (brew install ffmpeg).');
+  if (res.code !== 0) throw new OpError(`ffmpeg failed: ${res.stderr.trim().split('\n').pop()}`, 'Run `shot doctor`; ffmpeg must be on PATH (brew install ffmpeg on macOS, apt install ffmpeg on Debian/Ubuntu).');
 }
 
 async function frameSize(file) {

@@ -24,7 +24,7 @@ async function run() {
   checks.push(check('chrome', !!chrome, chrome ?? 'not found', 'Install Google Chrome.'));
   for (const bin of ['ffmpeg', 'ffprobe']) {
     const found = resolveOnPath(bin);
-    checks.push(check(bin, !!found, found ?? `${bin} not on PATH (shot record stop needs it)`, 'brew install ffmpeg'));
+    checks.push(check(bin, !!found, found ?? `${bin} not on PATH (shot record stop needs it)`, 'Install ffmpeg: brew install ffmpeg (macOS) or apt install ffmpeg (Debian/Ubuntu).'));
   }
   checks.push({ name: 'config', ok: true, detail: `${config.sources.join(' <- ')}${fs.existsSync(CONFIG_FILE) ? '' : ` (no ${CONFIG_FILE})`}`, values: { baseUrl: config.baseUrl, cdpPort: config.cdpPort, profile: config.profile, auth: config.auth, refuseClicks: config.refuseClicks } });
   checks.push({ name: 'state', ok: true, detail: `${STATE_DIR}${repo.inGit ? '' : ' (not a git repo)'}` });

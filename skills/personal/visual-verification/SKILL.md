@@ -1,13 +1,19 @@
 ---
 name: visual-verification
-description: Use after changing a UI to check it in a real browser, and whenever taking screenshots, recording a GIF demo, or adding images to a PR. Provides the `shot` CLI.
+description: Drive a real Chrome to check UI changes, with legible screenshots, accessibility snapshots, GIF demos and PR image upload through the `shot` CLI. Use after changing a UI, and whenever taking screenshots, recording a GIF demo, or adding images to a PR.
+license: MIT
+compatibility: Requires Node 20+, Google Chrome or Chromium, ffmpeg, and git; gh for pr-image. macOS and Linux. Needs network once for npm install.
 ---
 
 `shot` drives a persistent Chrome (one tab per git worktree), takes screenshots shrunk to the smallest size their text stays legible at, records GIF demos, and publishes images for PRs. Every command prints one JSON object (with `next`) and exits non-zero on failure. `shot <command> --help` has the details.
 
 ## Setup
 
-`shot doctor` checks Node 20+, playwright-core, Chrome, ffmpeg/ffprobe, the profile and the config source; each failed check carries its `fix`. Install: `npm --prefix ~/.agents/skills/visual-verification install` and `ln -s ~/.agents/skills/visual-verification/shot.mjs ~/.local/bin/shot`.
+`<skill-dir>` below is the folder holding this `SKILL.md`. `shot` means `node <skill-dir>/shot.mjs`.
+
+1. Once per install: `npm --prefix <skill-dir> install` (pulls playwright-core).
+2. `node <skill-dir>/shot.mjs doctor` checks Node 20+, playwright-core, Chrome, ffmpeg/ffprobe, the profile and the config source. Each failed check carries its `fix`.
+3. Optional: `ln -s <skill-dir>/shot.mjs ~/.local/bin/shot` to type `shot` directly (`~/.local/bin` must be on `PATH`).
 
 ## Commands
 
@@ -19,7 +25,7 @@ description: Use after changing a UI to check it in a real browser, and whenever
 | `shot screenshot [file.png] [--full]` | Legible PNG (stays small; `--full-res` only when a human asks). |
 | `shot browser start\|stop\|login\|whoami\|reset` | `stop` closes only this worktree's tab. `login` opens a window for a human to sign in; agents never type credentials. |
 | `shot record start` / `shot record stop` | GIF demo of a flow: drive it between the two. Writes `demo.gif` and `keyframes.png` (6 frames). |
-| `shot pr-image <file>… [--pr N] [--title t]` | Push images to the `agent-screenshots` branch (any repo with a GitHub origin); prints markdown. |
+| `shot pr-image <file>… [--pr N] [--title t]` | Push images to the `agent-screenshots` branch (any repo with a GitHub origin); prints markdown. Anyone who can read the repo can see them, so in a public repo they are public. |
 
 ## Screenshot and GIF for a PR
 
