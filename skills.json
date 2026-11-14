@@ -314,7 +314,7 @@
     "kind": "skill",
     "name": "visual-verification",
     "group": "personal",
-    "description": "Use after changing a UI to check it in a real browser, and whenever taking screenshots, recording a GIF demo, or adding images to a PR. Provides the `shot` CLI.",
+    "description": "Drive a real Chrome to check UI changes, with legible screenshots, accessibility snapshots, GIF demos and PR image upload through the `shot` CLI. Use after changing a UI, and whenever taking screenshots, recording a GIF demo, or adding images to a PR.",
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/visual-verification"

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Writes skills.json: one entry per skill and agent, for orchestrators that route work
 // without loading every SKILL.md.
-import { readdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -28,7 +28,7 @@ function frontmatter(text) {
 }
 
 function groups(dir) {
-  return existsSync(dir) ? readdirSync(dir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name) : [];
+  return existsSync(dir) ? readdirSync(dir).filter((name) => statSync(join(dir, name)).isDirectory()) : [];
 }
 
 const entries = [];
