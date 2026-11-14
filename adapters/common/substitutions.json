@@ -49,7 +49,7 @@
       "literal": "spawn a subagent on a different model family from the one that did the work.",
       "replacement": {
         "claude": "spawn a subagent on a different model from the same family as the one that did the work.",
-        "cursor": "spawn a fresh subagent on the `judgment and prose` model from the pstack sheet."
+        "cursor": "spawn a fresh subagent on the `judgment and prose` model from the rohostack sheet."
       }
     },
     {
