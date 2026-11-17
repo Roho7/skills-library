@@ -2,6 +2,7 @@
 name: remotion-markup
 description: Content, animation and effects best practices
 version: 4.0.541
+disable-model-invocation: true
 ---
 
 This is guidance for writing Remotion React Markup.

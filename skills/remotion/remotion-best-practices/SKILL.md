@@ -2,6 +2,7 @@
 name: remotion-best-practices
 description: Router for all Remotion skills
 version: 4.0.541
+disable-model-invocation: true
 ---
 
 ## Preserve user changes

@@ -20,6 +20,7 @@ description: |
   higgsfield-soul-id).
 argument-hint: "[--mode <mode>] [--count N] [prompt]"
 allowed-tools: Bash
+disable-model-invocation: true
 ---
 
 # Product Photoshoot

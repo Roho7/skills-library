@@ -2,6 +2,7 @@
 name: remotion-docs
 description: Search Remotion documentation
 version: 4.0.541
+disable-model-invocation: true
 ---
 
 This skill teaches you how to discover and read current Remotion documentation.

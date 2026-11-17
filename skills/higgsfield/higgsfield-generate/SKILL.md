@@ -24,6 +24,7 @@ description: |
   listing cards, text/chat/TTS tasks.
 argument-hint: "[prompt-or-analysis-request] [--model <name>] [--image|--video <path-or-id>]"
 allowed-tools: Bash
+disable-model-invocation: true
 ---
 
 # Higgsfield Generate

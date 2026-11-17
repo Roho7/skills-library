@@ -14,6 +14,7 @@ description: |
   named-character / non-photo avatars (use higgsfield-generate with prompt).
 argument-hint: "[name] [photo paths...]"
 allowed-tools: Bash
+disable-model-invocation: true
 ---
 
 # Higgsfield Soul Character

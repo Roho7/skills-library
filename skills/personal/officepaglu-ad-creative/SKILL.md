@@ -1,6 +1,7 @@
 ---
 name: officepaglu-ad-creative
 description: Generate OfficePaglu lifestyle ad creatives on Higgsfield. Produces candid Indian home/office/nightshift style photos of Soul characters wearing OfficePaglu tshirts with exact design accuracy. Use when the user wants to generate ad creatives, lifestyle shots, or product photography for OfficePaglu tshirts on Higgsfield.
+disable-model-invocation: true
 ---
 
 # OfficePaglu Ad Creative Generator

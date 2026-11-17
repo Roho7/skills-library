@@ -1,6 +1,7 @@
 ---
 name: officepaglu-story-creative
 description: Takes one seed image (generated with officepaglu-ad-creative) and builds a connected Instagram carousel series around it. Proposes 3 theme options, waits for user to pick one, then generates all remaining images in parallel on Higgsfield + writes caption.txt and copy_text.txt. Use when the user wants to expand a single ad creative into a multi-slide Instagram post or carousel.
+disable-model-invocation: true
 ---
 
 # OfficePaglu Story Creative
