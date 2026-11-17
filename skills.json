@@ -45,7 +45,7 @@
     "name": "higgsfield-generate",
     "group": "higgsfield",
     "description": "Generate images/videos via Higgsfield AI. Default: GPT Image 2 for images/design/text, Seedance 2.0 for video, Nano Banana 2/Pro for character/reference image work, Marketing Studio for ads with avatars/products/hooks, settings, plus Soul V2/Cinema/Cast/Location and Kling 3.0. Use when: \"generate an image\", \"make a video\", \"animate this photo\", \"image-to-video\", \"edit/stylize/remix this image\", \"produce a clip\", \"create an ad\", \"make a UGC video\", \"product demo\", \"unboxing\", \"brand video\", \"presenter video\", \"import product from URL\", \"create avatar for ad\", or \"analyze video virality\". Supports image-to-image, image-to-video, references, job/upload IDs, and Marketing Studio. Chain with higgsfield-soul-id for face/identity consistency. Virality Predictor (`brain_activity`) analyzes video virality: hook strength, attention, retention, distraction risk, and creative score. NOT for: Soul Character training (use higgsfield-soul-id), product photoshoots, marketplace listing cards, text/chat/TTS tasks.",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "higgsfield-ai/skills",
     "path": "skills/higgsfield/higgsfield-generate"
   },
@@ -54,7 +54,7 @@
     "name": "higgsfield-marketplace-cards",
     "group": "higgsfield",
     "description": "Generate marketplace product image cards through Higgsfield: compliant main image, secondary product images, and A+ style content modules. Use when the user asks for marketplace listing images, product detail cards, secondary product images, product infographics, lifestyle listing shots, A+ style content, marketplace image sets, or sales-ready product visuals. Backend owns marketplace compliance references and prompt templates; this skill only routes user intent to the CLI. NOT for generic brand product photography without marketplace/listing context (use higgsfield-product-photoshoot), video generation or UGC ads (use higgsfield-generate), or Soul Character training (use higgsfield-soul-id).",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "higgsfield-ai/skills",
     "path": "skills/higgsfield/higgsfield-marketplace-cards"
   },
@@ -63,7 +63,7 @@
     "name": "higgsfield-product-photoshoot",
     "group": "higgsfield",
     "description": "Generate brand-quality product images through Higgsfield product-photoshoot prompt enhancement on GPT Image 2 / gpt_image_2. Entry point for professional brand/product visuals. Use when: \"product photo\", \"studio shot\", \"lifestyle image\", \"Pinterest pin\", \"hero/banner\", \"carousel\", \"ad creative\", \"Meta ads\", \"virtual try-on\", \"model wearing\", \"person holding product\", \"closeup with hands\", \"levitating/floating/splash product\", \"CGI/surreal product\", \"restyle\", \"seasonal/aesthetic variation\", or any product, brand, or paid-social creative. Modes: product_shot, lifestyle_scene, closeup_product_with_person, moodboard_pin, hero_banner, social_carousel, ad_creative_pack, virtual_model_tryout, conceptual_product, restyle. Backend assembles the final prompt; never freehand it. NOT for: no-product text-to-image (use higgsfield-generate), branded avatar video (use higgsfield-generate Marketing Studio), marketplace listing cards (use higgsfield-marketplace-cards), Soul Character training (use higgsfield-soul-id).",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "higgsfield-ai/skills",
     "path": "skills/higgsfield/higgsfield-product-photoshoot"
   },
@@ -72,7 +72,7 @@
     "name": "higgsfield-soul-id",
     "group": "higgsfield",
     "description": "Train a Soul Character — a personalized model on a person's face that Higgsfield uses for identity-faithful image and video generation. Use when: \"create my Soul\", \"train my face\", \"make my digital twin\", \"build me an avatar\", \"learn my appearance\", \"create a character of me\", \"set up identity for video\", \"I want my face in generated images\". Chain: train Soul (one-time, returns reference_id) → use in higgsfield-generate via `--soul-id <id>` with models like `text2image_soul_v2` or `soul_cinema_studio`. NOT for: one-shot face swaps (use higgsfield-generate with --image), named-character / non-photo avatars (use higgsfield-generate with prompt).",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "higgsfield-ai/skills",
     "path": "skills/higgsfield/higgsfield-soul-id"
   },
@@ -243,7 +243,7 @@
     "name": "officepaglu-ad-creative",
     "group": "personal",
     "description": "Generate OfficePaglu lifestyle ad creatives on Higgsfield. Produces candid Indian home/office/nightshift style photos of Soul characters wearing OfficePaglu tshirts with exact design accuracy. Use when the user wants to generate ad creatives, lifestyle shots, or product photography for OfficePaglu tshirts on Higgsfield.",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "local",
     "path": "skills/personal/officepaglu-ad-creative"
   },
@@ -252,7 +252,7 @@
     "name": "officepaglu-copy-writer",
     "group": "personal",
     "description": "Generate on-brand Office Paglu copy — product descriptions, t-shirt text, Instagram captions, ad copy, SEO meta titles/descriptions, collection descriptions, and launch copy. Use when the user wants to write copy, captions, descriptions, taglines, or any text for OfficePaglu tshirts, collections, ads, or social media. Also use when another skill (officepaglu-ad-creative, officepaglu-story-creative) needs a caption or copy text.",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "local",
     "path": "skills/personal/officepaglu-copy-writer"
   },
@@ -261,7 +261,7 @@
     "name": "officepaglu-story-creative",
     "group": "personal",
     "description": "Takes one seed image (generated with officepaglu-ad-creative) and builds a connected Instagram carousel series around it. Proposes 3 theme options, waits for user to pick one, then generates all remaining images in parallel on Higgsfield + writes caption.txt and copy_text.txt. Use when the user wants to expand a single ad creative into a multi-slide Instagram post or carousel.",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "local",
     "path": "skills/personal/officepaglu-story-creative"
   },
@@ -270,7 +270,7 @@
     "name": "officepaglu-web-assets",
     "group": "personal",
     "description": "Generate all 5 OfficePaglu ecommerce web asset mockups (ghost mannequin, angled flatlay, macro closeup, full body front, full body back) on Higgsfield from a base tshirt mockup. Asks for fit type (regular/oversized) and print type (embroidery/DTG), then generates all 5 using exact proven prompts. Use when the user wants to create product page images or web assets for an OfficePaglu tshirt.",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "local",
     "path": "skills/personal/officepaglu-web-assets"
   },
@@ -324,7 +324,7 @@
     "name": "remotion-best-practices",
     "group": "remotion",
     "description": "Router for all Remotion skills",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-best-practices"
   },
@@ -333,7 +333,7 @@
     "name": "remotion-captions",
     "group": "remotion",
     "description": "Transcribing, displaying and animating captions",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-captions"
   },
@@ -342,7 +342,7 @@
     "name": "remotion-create",
     "group": "remotion",
     "description": "Create a new Remotion video",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-create"
   },
@@ -351,7 +351,7 @@
     "name": "remotion-docs",
     "group": "remotion",
     "description": "Search Remotion documentation",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-docs"
   },
@@ -360,7 +360,7 @@
     "name": "remotion-interactivity",
     "group": "remotion",
     "description": "Structure Remotion markup for interactivity",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-interactivity"
   },
@@ -369,7 +369,7 @@
     "name": "remotion-maps",
     "group": "remotion",
     "description": "Remotion Map animation knowledge",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-maps"
   },
@@ -378,7 +378,7 @@
     "name": "remotion-markup",
     "group": "remotion",
     "description": "Content, animation and effects best practices",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-markup"
   },
@@ -387,7 +387,7 @@
     "name": "remotion-multimedia",
     "group": "remotion",
     "description": "Interacting with Mediabunny",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-multimedia"
   },
@@ -396,7 +396,7 @@
     "name": "remotion-render",
     "group": "remotion",
     "description": "Export a Remotion video",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-render"
   },
@@ -405,7 +405,7 @@
     "name": "remotion-saas",
     "group": "remotion",
     "description": "Build an app with Remotion",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-saas"
   },
@@ -414,7 +414,7 @@
     "name": "remotion-studio",
     "group": "remotion",
     "description": "Preview a Remotion video",
-    "modelInvocable": true,
+    "modelInvocable": false,
     "source": "remotion-dev/skills",
     "path": "skills/remotion/remotion-studio"
   },

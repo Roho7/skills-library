@@ -2,6 +2,7 @@
 name: remotion-saas
 description: Build an app with Remotion
 version: 4.0.541
+disable-model-invocation: true
 ---
 
 One can build apps with Remotion.  

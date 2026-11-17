@@ -1,6 +1,7 @@
 ---
 name: officepaglu-copy-writer
 description: Generate on-brand Office Paglu copy — product descriptions, t-shirt text, Instagram captions, ad copy, SEO meta titles/descriptions, collection descriptions, and launch copy. Use when the user wants to write copy, captions, descriptions, taglines, or any text for OfficePaglu tshirts, collections, ads, or social media. Also use when another skill (officepaglu-ad-creative, officepaglu-story-creative) needs a caption or copy text.
+disable-model-invocation: true
 ---
 
 # Office Paglu Copy Writer

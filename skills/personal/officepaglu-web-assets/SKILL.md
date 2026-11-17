@@ -1,6 +1,7 @@
 ---
 name: officepaglu-web-assets
 description: Generate all 5 OfficePaglu ecommerce web asset mockups (ghost mannequin, angled flatlay, macro closeup, full body front, full body back) on Higgsfield from a base tshirt mockup. Asks for fit type (regular/oversized) and print type (embroidery/DTG), then generates all 5 using exact proven prompts. Use when the user wants to create product page images or web assets for an OfficePaglu tshirt.
+disable-model-invocation: true
 ---
 
 # OfficePaglu Web Asset Generator
