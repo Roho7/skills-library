@@ -1,7 +1,9 @@
 # rohostack in Claude Code
 
-rohostack skills here are pre-translated for Claude Code: tool names, model names and the model-sheet path already use Claude names. Map the few remaining Cursor terms like this:
+Map the Cursor terms in rohostack skills like this:
 
+- `Task` → `Agent`, `AskQuestion` → `AskUserQuestion`, `generalPurpose` → `general-purpose`, `environment: "cloud"` → `isolation: "worktree"`.
+- `~/.cursor/rules/rohostack-models.mdc` → `~/.claude/rules/rohostack-models.md`. `.cursor/skills/`, `~/.cursor/plugins/` and `.cursor-plugin/plugin.json` → the `.claude` equivalents.
 - `readonly: true` → `subagent_type: "Explore"` and tell the agent not to edit files. `readonly: false` → `general-purpose`.
 - `environment: "local"`, `run_in_background: true` → omit. `cloud_base_branch: <b>` → tell the worker to check out `<b>` first. `resume` → spawn a new agent with the earlier result in its brief. `file_attachments` → list the paths in the brief.
 - A role value names a model (e.g. `sonnet`) → `model` on the Agent call, with `effort` from the sheet's `# effort` line. `inherit-parent` or `auto` → omit `model`.
