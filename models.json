@@ -6,7 +6,6 @@
     "worker": { "cursor": "grok-4.7-medium", "claude": "sonnet" },
     "panel": { "cursor": ["grok-4.7-medium", "grok-4.7-medium"], "claude": ["opus", "fable", "sonnet", "haiku"] }
   },
-  "upstreamDefaults": { "grok-4.7-xhigh-fast": "worker", "claude-opus-5-5-xhigh": "default" },
   "roles": {
     "feature, refactoring": "worker",
     "bug-fix": "default",
