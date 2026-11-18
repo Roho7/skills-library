@@ -10,3 +10,4 @@ Map the Cursor terms in rohostack skills like this:
 - Transcripts in `~/.cursor/projects/<slug>/agent-transcripts/` → `~/.claude/projects/<slug>/<session>.jsonl` (slug: workspace path with `/` and `.` as `-`; newest `.jsonl` is the current session).
 - `.cursor/rules/*.mdc` → the project's `CLAUDE.md` (or `AGENTS.md` when there is none).
 - Cursor Automations, routines, webhooks, Bugbot setup and Cursor cloud-agent dashboards don't exist here. Write `Skipped in Claude Code: <step>. <reason>.` and continue. Bugbot comments already on a PR are ordinary review threads. A built-in PR tool step uses `gh`.
+- `/no-comments` → `Agent` with `subagent_type: "comment-sicko"` on the diff. The skill sets `disable-model-invocation`, so it cannot be called directly.
