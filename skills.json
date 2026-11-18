@@ -114,6 +114,15 @@
   },
   {
     "kind": "skill",
+    "name": "domain-modeling",
+    "group": "mattpocock",
+    "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.",
+    "modelInvocable": true,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/domain-modeling"
+  },
+  {
+    "kind": "skill",
     "name": "grill-me",
     "group": "mattpocock",
     "description": "A relentless interview to sharpen a plan or design.",
@@ -147,6 +156,15 @@
     "modelInvocable": false,
     "source": "mattpocock/skills",
     "path": "skills/mattpocock/implement"
+  },
+  {
+    "kind": "skill",
+    "name": "improve-codebase-architecture",
+    "group": "mattpocock",
+    "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+    "modelInvocable": false,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/improve-codebase-architecture"
   },
   {
     "kind": "skill",
@@ -305,7 +323,7 @@
     "kind": "skill",
     "name": "shh",
     "group": "personal",
-    "description": "A super quiet way of speaking where one can only utter 3 short sentences",
+    "description": "A super quiet way of speaking where one can only utter 3 short sentences.",
     "modelInvocable": false,
     "source": "local",
     "path": "skills/personal/shh"
@@ -314,7 +332,7 @@
     "kind": "skill",
     "name": "visual-verification",
     "group": "personal",
-    "description": "Drive a real Chrome to check UI changes, with legible screenshots, accessibility snapshots, GIF demos and PR image upload through the `shot` CLI. Use after changing a UI, and whenever taking screenshots, recording a GIF demo, or adding images to a PR.",
+    "description": "Drive a real Chrome to check UI changes, with legible screenshots, accessibility snapshots, mocked API responses, request logs, GIF demos and PR image upload through the `shot` CLI, plus the iOS Simulator path for Safari bugs. Use after changing a UI, and whenever taking screenshots, recording a GIF demo, or adding images to a PR.",
     "modelInvocable": true,
     "source": "local",
     "path": "skills/personal/visual-verification"
