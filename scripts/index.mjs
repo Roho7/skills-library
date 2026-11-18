@@ -28,7 +28,15 @@ function frontmatter(text) {
 }
 
 function groups(dir) {
-  return existsSync(dir) ? readdirSync(dir).filter((name) => statSync(join(dir, name)).isDirectory()) : [];
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).filter((name) => {
+    const full = join(dir, name);
+    if (!existsSync(full)) {
+      console.error(`skipping broken symlink ${full}`);
+      return false;
+    }
+    return statSync(full).isDirectory();
+  });
 }
 
 const entries = [];
