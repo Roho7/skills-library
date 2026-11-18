@@ -114,6 +114,15 @@
   },
   {
     "kind": "skill",
+    "name": "domain-modeling",
+    "group": "mattpocock",
+    "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.",
+    "modelInvocable": true,
+    "source": "mattpocock/skills",
+    "path": "skills/mattpocock/domain-modeling"
+  },
+  {
+    "kind": "skill",
     "name": "grill-me",
     "group": "mattpocock",
     "description": "A relentless interview to sharpen a plan or design.",

@@ -389,6 +389,16 @@
       "updatedAt": "2026-11-18T07:43:41Z",
       "group": "mattpocock",
       "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
+    },
+    "domain-modeling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/domain-modeling/SKILL.md",
+      "installedAt": "2026-11-18T07:48:44Z",
+      "updatedAt": "2026-11-18T07:48:44Z",
+      "group": "mattpocock",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa"
     }
   },
   "dismissed": {
